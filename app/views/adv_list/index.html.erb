@@ -1,0 +1,16 @@
+<% if notice %>
+<p id="notice"><%= notice %> </p>
+<% end %>
+
+<h1>Объявления</h1>
+
+<% @adv.each do |adv| %>
+	<div class="entry">
+		<%= image_tag(adv.image_url) %>
+		<h3><%= adv.title %></h3>
+		<%= sanitize(adv.description)%>
+		<div class="price_line">
+			<span class="price"><%= sprintf("%0.02f руб.", adv.price) %></span>
+		</div>
+	</div>
+<% end %>
