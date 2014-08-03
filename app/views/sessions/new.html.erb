@@ -1,0 +1,30 @@
+<!--http://media.pragprog.com/titles/rails4/code/rails40/depot_r/app/views/sessions/new.html.erb -->
+
+
+<div class="azcommunity_form">
+	<% if flash[:alert] %>
+		<p id="notice"><%= flash[:alert] %></p>
+	<% end %>
+
+
+	<%= form_tag do %>
+		<fieldset>
+			<legeng> Авторизация </legent>
+
+			<div>
+				<%= label_tag :name, 'Имя:' %> &nbsp;&nbsp;&nbsp;&nbsp;
+				<%= text_field_tag :name, params[:name] %>
+			</div>
+
+			<div>
+				<%= label_tag :password, 'Пароль:' %>
+				<%= password_field_tag :password, params[:password] %>
+			</div>
+
+			<div>
+				<%= submit_tag "Login"%>
+				<a href=<%= users_new_url%>>Зарегистрироваться</a>				
+			</div>
+		</fieldset>
+	<% end %>
+</div>

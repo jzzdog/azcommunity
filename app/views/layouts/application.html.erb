@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Aquapelle capsules online store</title>
+<head>		
+  <title>Allianz community</title>
   <%= stylesheet_link_tag    "application", media: "all", 
   	"data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", 
@@ -9,23 +9,40 @@
   <%= csrf_meta_tags %>
 </head>
 <body class='<%= controller.controller_name %>'>
-	<div id="banner">
-		<%= image_tag("logo.png") %>
-		<%= @page_title || "Сообщество сотрудников Allianz в России"%>
-	</div>
+	<table id="bannertable" width="100%">
+		<tr>
+			<td>
+				<div id="banner">
+					<%= image_tag("logo_community.png") %>		
+					<%= @page_title || "Сообщество сотрудников Альянс"%>
+				</div>
+			</td>
+			<td width="60px">
+				<% if User.find_by(id: session[:user_id]) %>						
+					<div> <%= User.find_by(id: session[:user_id]).name %> </div>
+					<a href=<%= logout_url%>>Выйти</a>
+				<% else %>
+					<a href=<%= login_url%>>Войти</a>				
+				<% end %>
+			</td>			
+		</tr>
+	</table>
 	<div id="columns">
 		<div id="side">
-			<ul>
-				<li><a href="http://www....">Объявления</a></li>
-				<li><a href="http://www..../faq">Вопросы</a></li>
-				<li><a href="http://www..../news">Новости</a></li>
-				<li><a href="http://www..../contact">Контакты</a></li>
+			<ul>				
+				<li><a href=<%= adv_list_index_url%>>Объявления</a></li>				
+				<li><a href=<%= adv_list_index_url%>>Форум</a></li>				
+				<li><a href=<%= adv_list_index_url%>>О&nbsp;сообществе</a></li>
 			</ul>
 		</div>
 		<div id="main">
 			<%= yield%>
 		</div>
 	</div>
+
+	<p> ©2014 All rights reserved</p>	
+	<p>	Contact us: allianz.community@gmail.com </p>
+
 </body>
 
 </html>

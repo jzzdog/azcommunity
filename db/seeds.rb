@@ -16,7 +16,7 @@ Advert.create!(title: 'Антидождь Aquapel',
       </p>},
   image_url:   'aquapel.png',  
   price: 300.00,
-  user_id: 0)
+  user_id: 1)
 # . . .
 Advert.create!(title: 'Programming Ruby 1.9 & 2.0',
   description:
@@ -27,7 +27,7 @@ Advert.create!(title: 'Programming Ruby 1.9 & 2.0',
       </p>},
   image_url: 'ruby.jpg',
   price: 49.95,
-  user_id: 0)
+  user_id: 1)
 # . . .
 
 Advert.create!(title: 'Rails Test Prescriptions',
@@ -42,4 +42,6 @@ Advert.create!(title: 'Rails Test Prescriptions',
       </p>},
   image_url: 'rtp.jpg',
   price: 34.95,
-  user_id: 0)
+  user_id: 1)
+
+

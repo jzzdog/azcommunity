@@ -11,6 +11,11 @@
 		<%= sanitize(adv.description)%>
 		<div class="price_line">
 			<span class="price"><%= sprintf("%0.02f руб.", adv.price) %></span>
+
+		</div>
+		<div class="userinfo">
+			<span><%= User.find_by(id: adv.user_id).name %></span>
+			<span><%= User.find_by(id: adv.user_id).name %></span>
 		</div>
 	</div>
 <% end %>

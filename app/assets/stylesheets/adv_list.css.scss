@@ -7,7 +7,7 @@
 		padding-bottom: 0.5em;
 		font: 150% sans-serif;
 		color: #226;
-		border-bottom: 3px dotted #77d;
+		border-bottom: 2px dotted #77d;
 	}
 	/* Запись в каталоге store */
 	.entry {
@@ -38,6 +38,12 @@
 			color: #44a;
 			font-weight: bold;
 			margin-right: 3em;
+		}
+		div.userinfo {
+			color: #55a;
+			font-weight: bold;
+			margin-right: 3em;
+			margin-left: 100px;
 		}
 	}
 }
