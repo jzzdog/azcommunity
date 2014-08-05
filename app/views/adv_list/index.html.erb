@@ -6,16 +6,23 @@
 
 <% @adv.each do |adv| %>
 	<div class="entry">
-		<%= image_tag(adv.image_url) %>
-		<h3><%= adv.title %></h3>
-		<%= sanitize(adv.description)%>
+		<%= image_tag(adv.get_image_url) %>		
+		<h3><%= adv.title %></h3>		
+		<%= sanitize(adv.description)%>		
 		<div class="price_line">
 			<span class="price"><%= sprintf("%0.02f руб.", adv.price) %></span>
 
 		</div>
+
 		<div class="userinfo">
-			<span><%= User.find_by(id: adv.user_id).name %></span>
-			<span><%= User.find_by(id: adv.user_id).name %></span>
+			<span><%= User.find_by(id: adv.user_id).get_user_info() %></span>						
+		</div>
+		<div class="userinfo">			
+			<span><%= adv.created_at %></span>
 		</div>
 	</div>
 <% end %>
+
+<p> </p>
+
+<%= button_to 'Подать объявление', adverts_new_path %>

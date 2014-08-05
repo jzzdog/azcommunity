@@ -1,6 +1,8 @@
 Azcommunity::Application.routes.draw do
 
   get "adv_list/index"
+  get "adverts/new"
+  post "adverts/new"
   resources :adverts
   
   #get 'login' => 'sessions#new'

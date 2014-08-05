@@ -25,6 +25,7 @@ class AdvertsController < ApplicationController
   # POST /adverts.json
   def create
     @advert = Advert.new(advert_params)
+    @advert.user_id = session[:user_id]
 
     respond_to do |format|
       if @advert.save
@@ -69,6 +70,6 @@ class AdvertsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def advert_params
-      params.require(:advert).permit(:title, :description, :image_url, :price, :user_id, :created)
+      params.require(:advert).permit(:title, :description, :image_url, :price, :user_id)
     end
 end

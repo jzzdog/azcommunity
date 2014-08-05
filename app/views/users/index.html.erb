@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Email</th>
       <th>Office</th>
       <th>Phone</th>
       <th></th>
@@ -16,6 +17,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
+        <td><%= user.mail %></td>
         <td><%= user.office %></td>
         <td><%= user.phone %></td>
         <td><%= link_to 'Show', user %></td>

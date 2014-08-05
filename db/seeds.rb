@@ -27,7 +27,7 @@ Advert.create!(title: 'Programming Ruby 1.9 & 2.0',
       </p>},
   image_url: 'ruby.jpg',
   price: 49.95,
-  user_id: 1)
+  user_id: 2)
 # . . .
 
 Advert.create!(title: 'Rails Test Prescriptions',
@@ -42,6 +42,25 @@ Advert.create!(title: 'Rails Test Prescriptions',
       </p>},
   image_url: 'rtp.jpg',
   price: 34.95,
-  user_id: 1)
+  user_id: 2)
+
+User.delete_all
+User.create!(id: 1,
+  name: 'jzzdog',
+  mail: 'dmanishchenko@gmail.com',
+  password: '1qazXSW@',
+  password_confirmation: '1qazXSW@',
+  office: 1,
+  phone: '1234')
+
+User.create!(id: 2,
+  name: 'dave',
+  mail: 'dave@allianz.ru',
+  password: '1qazXSW@',
+  password_confirmation: '1qazXSW@',
+  office: 2,
+  phone: '6564')
+
+
 
 
