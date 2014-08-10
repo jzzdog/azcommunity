@@ -14,11 +14,13 @@ class AdvertsController < ApplicationController
 
   # GET /adverts/new
   def new
+    @action_name = 'Создать объявление'
     @advert = Advert.new
   end
 
   # GET /adverts/1/edit
   def edit
+    @action_name = 'Обновить'
   end
 
   # POST /adverts

@@ -35,11 +35,20 @@
     }
   }
 
+  .style_image {
+    border: 1px solid #000;
+  }
+
+  .doted_header {
+    border-bottom: 1px dotted#77d;    
+  }
+
+
   .list_actions {
     font-size:    x-small;
     text-align:   right;
     padding-left: 1em;
-  }
+  }   
 
   .list_line_even {
     background:   #e0f8f8;

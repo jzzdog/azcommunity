@@ -7,8 +7,8 @@
 <% @adv.each do |adv| %>
 	<div class="entry">
 		<%= image_tag(adv.get_image_url) %>		
-		<h3><%= adv.title %></h3>		
-		<%= sanitize(adv.description)%>		
+		<h3><%= link_to adv.title, adv %><br></h3>		
+		<p><%= sanitize(adv.description)%></p>
 		<div class="price_line">
 			<span class="price"><%= sprintf("%0.02f руб.", adv.price) %></span>
 

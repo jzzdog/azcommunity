@@ -1,34 +1,49 @@
-<p id="notice"><%= notice %></p>
+<h1 class = "doted_header"><%= @advert.title %></h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @advert.title %>
-</p>
+<table>
+  <tr>
+    
+    <td>
 
-<p>
-  <strong>Description:</strong>
-  <%= @advert.description %>
-</p>
+      <%= image_tag(@advert.get_image_url, :class => "style_image") %>
 
-<p>
-  <strong>Image url:</strong>
-  <%= @advert.image_url %>
-</p>
+      <p>
+        <strong>Описание:</strong>
+        <%= sanitize(@advert.description) %>
+      </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @advert.price %>
-</p>
+      <p>
+        <strong>Цена:</strong>
+        <%= sprintf("%0.02f руб.", @advert.price) %>
+      </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @advert.user_id %>
-</p>
+      <p>
+        <strong>Пользователь:</strong>
+        <%= User.find_by(id: @advert.user_id).get_user_info() %>
+      </p>
 
-<p>
-  <strong>Created:</strong>
-  <%= @advert.created %>
-</p>
+      <p>
+        <strong>Дата создания:</strong>
+        <%= @advert.created_at %>
+      </p>
 
-<%= link_to 'Edit', edit_advert_path(@advert) %> |
-<%= link_to 'Back', adverts_path %>
+    </td>
+
+    
+      
+        
+      
+    
+
+  </tr>
+<table>
+
+
+
+
+
+
+<% if session[:user_id] == @advert.user_id %>
+<%= link_to 'Редактировать', edit_advert_path(@advert) %> |
+<% end %>
+<%= link_to 'Назад', adv_list_index_path %>
