@@ -11,22 +11,41 @@
     </div>
   <% end %>
 
-  <div class="advert_edit">
+  <div class="field">
     <%= f.label :Заголовок %><br>
-    <%= f.text_field :title, size: 50 %>
+    <%= f.text_field :title, size: 35 %>
   </div>
+
   <div class="field">
     <%= f.label :Описание %><br>
-    <%= f.text_area :description, cols: 50, rows: 20 %>
+    <%= f.text_area :description, cols: 35, rows: 15 %>
   </div>
-  <div class="field">
-    <%= f.label :Изображение %><br>
-    <%= f.text_field :image_url, size: 50 %>
-  </div>
-  <div class="field">
-    <%= f.label :Стоимость %><br>
-    <%= f.text_field :price %>
-  </div>  
+
+
+  <table>
+    <tr>
+      <td><%= f.label :Изображение %><td>
+      <td><%= f.text_field :image_url%><td>
+    </tr>
+
+    <tr>
+      <td><%= f.label :Стоимость %><td>
+      <td><%= f.text_field :price%><td>
+    </tr>
+
+    <% if params[:action] == "edit" %>
+    <tr>
+      <td><%= f.label :Статус %><td>
+      <td><%= f.select :status, options_for_select([["Активное", 1], ["Истекшее", 2], ["Закрытое", 3]]) %><td>
+    </tr>
+    <% end %>
+
+  </table>
+
+  <br>
+
+  
+
   <div class="actions">
     <%= f.submit @action_name %>
   </div>

@@ -2,8 +2,9 @@
 <p id="notice"><%= notice %> </p>
 <% end %>
 
-<h1>Объявления</h1>
+<h1><%= @header_text %></h1>
 
+<% if @adv %>
 <% @adv.each do |adv| %>
 	<div class="entry">
 		<%= image_tag(adv.get_image_url) %>		
@@ -11,16 +12,19 @@
 		<p><%= sanitize(adv.description)%></p>
 		<div class="price_line">
 			<span class="price"><%= sprintf("%0.02f руб.", adv.price) %></span>
-
 		</div>
 
 		<div class="userinfo">
 			<span><%= User.find_by(id: adv.user_id).get_user_info() %></span>						
 		</div>
 		<div class="userinfo">			
-			<span><%= adv.created_at %></span>
+			<span><%= adv.created_at.strftime("%d.%m.%Y в %k:%m") %></span>
+			<% if session[:user_id] == adv.user_id %>
+			  <span><%= link_to 'редактировать', edit_advert_path(adv) %> </span>
+			<% end %>
 		</div>
 	</div>
+<% end %>
 <% end %>
 
 <p> </p>

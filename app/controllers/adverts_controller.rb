@@ -31,7 +31,7 @@ class AdvertsController < ApplicationController
 
     respond_to do |format|
       if @advert.save
-        format.html { redirect_to @advert, notice: 'Advert was successfully created.' }
+        format.html { redirect_to @advert, notice: 'Объявление успешно обновлено.' }
         format.json { render action: 'show', status: :created, location: @advert }
       else
         format.html { render action: 'new' }
@@ -45,7 +45,7 @@ class AdvertsController < ApplicationController
   def update
     respond_to do |format|
       if @advert.update(advert_params)
-        format.html { redirect_to @advert, notice: 'Advert was successfully updated.' }
+        format.html { redirect_to @advert, notice: 'Объявление успешно обновлено.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -72,6 +72,6 @@ class AdvertsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def advert_params
-      params.require(:advert).permit(:title, :description, :image_url, :price, :user_id)
+      params.require(:advert).permit(:title, :description, :image_url, :price, :user_id, :status)
     end
 end

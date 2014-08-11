@@ -1,6 +1,7 @@
 Azcommunity::Application.routes.draw do
 
   get "adv_list/index"
+  get "adv_list/myindex"
   get "adverts/new"
   post "adverts/new"
   resources :adverts

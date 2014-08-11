@@ -1,49 +1,44 @@
+<% if notice %>
+<p id="notice"><%= notice %> </p>
+<% end %>
+
 <h1 class = "doted_header"><%= @advert.title %></h1>
 
-<table>
-  <tr>
-    
-    <td>
 
-      <%= image_tag(@advert.get_image_url, :class => "style_image") %>
+<%= image_tag(@advert.get_image_url, :class => "style_image") %>
 
-      <p>
-        <strong>Описание:</strong>
-        <%= sanitize(@advert.description) %>
-      </p>
+<p>
+  <strong>Описание:</strong>
+  <%= sanitize(@advert.description) %>
+</p>
 
-      <p>
-        <strong>Цена:</strong>
-        <%= sprintf("%0.02f руб.", @advert.price) %>
-      </p>
+<p>
+  <strong>Цена:</strong>
+  <%= sprintf("%0.02f руб.", @advert.price) %>
+</p>
 
-      <p>
-        <strong>Пользователь:</strong>
-        <%= User.find_by(id: @advert.user_id).get_user_info() %>
-      </p>
+<p>
+  <strong>Пользователь:</strong>
+  <%= User.find_by(id: @advert.user_id).get_user_info() %>
+</p>
 
-      <p>
-        <strong>Дата создания:</strong>
-        <%= @advert.created_at %>
-      </p>
+<p>
+  <strong>Контактный email:</strong>
+  <%= User.find_by(id: @advert.user_id).mail %>
+</p>
 
-    </td>
+<p>
+  <strong>Дата создания:</strong>
+  <%= @advert.created_at.strftime("%d.%m.%Y в %k:%m") %>
+</p>
 
-    
-      
-        
-      
-    
-
-  </tr>
-<table>
-
-
-
-
+<p>
+  <strong>Статус объявления:</strong>
+  <%= @advert.get_status_name %>
+</p>
 
 
 <% if session[:user_id] == @advert.user_id %>
-<%= link_to 'Редактировать', edit_advert_path(@advert) %> |
+  <%= link_to 'Редактировать', edit_advert_path(@advert) %> |
 <% end %>
 <%= link_to 'Назад', adv_list_index_path %>

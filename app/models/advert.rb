@@ -8,4 +8,17 @@ class Advert < ActiveRecord::Base
 		end
 		@url
 	end
+
+	def get_status_name()
+  	status_list = [
+  		'Не установлен',
+  		'Активное',
+  		'Истекшее',
+  		'Закрытое'
+  	]
+
+  	if status
+  		@status_name = status_list[status] 
+  	end
+  end
 end

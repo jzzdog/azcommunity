@@ -6,6 +6,7 @@ one:
   image_url: MyString
   price: 9.99
   user_id: 1
+  status: 1
   created: 2014-07-22 17:46:31
 
 two:
@@ -14,4 +15,5 @@ two:
   image_url: MyString
   price: 9.99
   user_id: 1
+  status: 1
   created: 2014-07-22 17:46:31
