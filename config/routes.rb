@@ -1,5 +1,8 @@
 Azcommunity::Application.routes.draw do
 
+  get "forum/index"
+  resources :messages
+
   get "adv_list/index"
   get "adv_list/myindex"
   get "adverts/new"

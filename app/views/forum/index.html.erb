@@ -1,0 +1,27 @@
+<% if notice %>
+<p id="notice"><%= notice %> </p>
+<% end %>
+
+<h1>Форум</h1>
+
+<div class="entry">
+	<%= render(@message) %>
+</div>
+<% if @msg %>
+<% @msg.each do |msg| %>
+	<div class="entry">		
+		<h3><%= User.find_by(id: msg.user_id).get_user_info() %><br></h3>		
+		<p><%= msg.body %></p>	
+			
+		<div class="userinfo">			
+			<span><%= msg.created_at.strftime("%d.%m.%Y в %k:%m") %></span>
+			<% if session[:user_id] == msg.user_id %>
+			  <span><%= link_to '', edit_message_path(msg) %> </span>
+			<% end %>
+		</div>
+	</div>
+<% end %>
+<% end %>
+
+<p> </p>
+

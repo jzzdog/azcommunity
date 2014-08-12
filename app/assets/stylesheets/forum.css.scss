@@ -1,0 +1,50 @@
+// Place all the styles related to the Forum controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.forum {
+	h1 {
+		margin:0;
+		padding-bottom: 0.5em;
+		font: 150% sans-serif;
+		color: gray;
+		border-bottom: 2px solid silver;
+	}
+	
+	.entry {
+		overflow: auto;
+		margin-top: 3px;
+		border-bottom: 1px dotted#77d;
+		min-height: 60px;				
+		img {
+			width: 80px;
+			margin-right: 5px;
+			margin-bottom: 5px;
+			position: absolute;
+		}
+		h3 {
+			font-size: 100%;
+			font-family: sans-serif;
+			margin-left: 20px;
+			margin-top: 0;
+			margin-bottom: 2px;
+			color: #227;
+		}
+		p, div.price_line {
+			margin-left: 20px;
+			margin-top: 0.1em;
+			margin-bottom: 0.2em;		
+		}
+		.price {
+			color: #44a;
+			font-weight: bold;
+			margin-right: 3em;
+		}
+		div.userinfo {
+			color: gray;
+			font-weight: bold;
+			margin-right: 3em;
+			margin-left: 20px;
+			margin-bottom: 0.2em;
+		}
+	}
+}
