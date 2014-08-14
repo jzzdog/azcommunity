@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorize, only: [:new, :create, :edit]
+  skip_before_action :authorize, only: [:new, :create, :edit, :info]
 
   # GET /users
   # GET /users.json
@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  # GET /users/new
+  def info    
+  end
+
   # GET /users/1/edit
   def edit
   end
@@ -29,7 +33,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        UserNotifier.confirmation.deliver
+        format.html { redirect_to login_url, notice: 'Пользователь успено создан. Подтверждение отправлено на почтовый ящик.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }

@@ -4,8 +4,11 @@
 <div class="azcommunity_form">
 	<% if flash[:alert] %>
 		<p id="notice"><%= flash[:alert] %></p>
+	<% else %>
+		<% if notice %>
+			<p id="notice"><%= notice %> </p>
+		<% end %>
 	<% end %>
-
 
 	<%= form_tag do %>
 		<fieldset>

@@ -23,5 +23,13 @@
 <% end %>
 <% end %>
 
-<p> </p>
+<!--
+<div id="#section1">some stuff</div>
+<script type="text/javascript">
+document.location.hash="#section1"; 
+</script>
+-->
 
+<span><%= button_to 'Показать еще', forum_index_path(limit: (params[:limit]||"5").to_i + 5 ), :class => "showmore" %> </span>
+
+<p> </p>

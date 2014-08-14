@@ -1,6 +1,7 @@
 Azcommunity::Application.routes.draw do
 
   get "forum/index"
+  post "forum/index"
   resources :messages
 
   get "adv_list/index"
@@ -23,6 +24,7 @@ Azcommunity::Application.routes.draw do
   resources :users
 
   get 'users/new'
+  get 'users/info'
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
