@@ -48,9 +48,17 @@ Advert.create!(title: 'Rails Test Prescriptions',
   status: 1)
 
 User.delete_all
+User.create!(id: 0,
+  name: 'admin',
+  mail: 'admin@allianz.ru',
+  password: 'admin',
+  password_confirmation: 'admin',
+  office: 1,
+  phone: '1234')
+
 User.create!(id: 1,
-  name: 'jzzdog',
-  mail: 'dmanishchenko@gmail.com',
+  name: 'steve',
+  mail: 'steve@allianz.ru',
   password: '1qazXSW@',
   password_confirmation: '1qazXSW@',
   office: 1,

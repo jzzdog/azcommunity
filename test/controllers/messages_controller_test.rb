@@ -21,7 +21,7 @@ class MessagesControllerTest < ActionController::TestCase
       post :create, message: { body: @message.body, office_id: @message.office_id, title: @message.title, user_id: @message.user_id }
     end
 
-    assert_redirected_to message_path(assigns(:message))
+    assert_redirected_to forum_index_path
   end
 
   test "should show message" do

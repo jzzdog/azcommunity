@@ -1,3 +1,9 @@
-UserNotifier#confirmation
+Добрый день, <%= @user.name %>!
 
-<%= @greeting %>, find me in app/views/app/views/user_notifier/confirmation.text.erb
+Благодарим вас за регистрацию в сообществе сотрудников Альянс.
+Для подтверждения регистрации перейдите по ссылке:
+<%= @confirm_path %>
+
+--
+С уваженим,
+команда Allianz community

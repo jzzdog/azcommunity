@@ -13,6 +13,10 @@ Azcommunity::Application.routes.draw do
   #get 'login' => 'sessions#new'
   #post 'login' => 'adv_list#index'
 
+  get 'users/new'
+  get 'users/confirm'
+  resources :users
+  
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
@@ -23,9 +27,7 @@ Azcommunity::Application.routes.draw do
   #get "sessions/destroy"
   resources :users
 
-  get 'users/new'
-  get 'users/info'
-  resources :users
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

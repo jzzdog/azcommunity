@@ -18,10 +18,10 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, user: { name: @user.name, office: @user.office, password: 'secret', password_confirmation: 'secret', phone: @user.phone }
+      post :create, user: { name: 'john', office: @user.office, password: 'secret', password_confirmation: 'secret', phone: @user.phone, mail: 'john@allianz.ru'}
     end
 
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to loign_path)
   end
 
   test "should show user" do

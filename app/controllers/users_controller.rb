@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorize, only: [:new, :create, :edit, :info]
+  skip_before_action :authorize, only: [:new, :create, :edit, :confirm]
 
   # GET /users
   # GET /users.json
@@ -18,8 +18,24 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # GET /users/new
-  def info    
+  # GET /users/confirm
+  def confirm    
+    if params[:id]
+      @user = User.find(params[:id])
+      if @user 
+        if @user.confirm_hash = params[:hash]
+          @user.status = 0
+          @user.update(:status => 0)
+          @message_text = "Учетная запись успешно подтверждена!"
+        else
+          @message_text = "Неверный код подтверждения"
+        end
+      else
+        @message_text = "Неверные параметры запроса"
+      end
+    else
+      @message_text = "Неверные параметры запроса"      
+    end
   end
 
   # GET /users/1/edit
@@ -31,15 +47,22 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+    @user.status = -1
+    @user.confirm_hash = @user.generate_confirm_hash
+
     respond_to do |format|
-      if @user.save
-        UserNotifier.confirmation.deliver
-        format.html { redirect_to login_url, notice: 'Пользователь успено создан. Подтверждение отправлено на почтовый ящик.' }
-        format.json { render action: 'show', status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+      #if User.find_by(name: @user.name)
+      #  Пользователь с таким 
+      #else        
+        if @user.save        
+          UserNotifier.confirmation(@user).deliver
+          format.html { redirect_to login_url, notice: 'Ваша учетная запись успешно создана! Для завершения регистрации перейдите по ссылке, указанной в письме. (Возможно попадание в спам!)' }
+          format.json { render action: 'show', status: :created, location: @user }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      #end
     end
   end
 

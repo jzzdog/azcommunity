@@ -7,6 +7,7 @@ one:
   password_digest: <%= BCrypt::Password.create('1qazXSW@') %>
   office: 1
   phone: MyString
+  confirm_hash: asdfaqwerqw
 
 two:
   id: 2
@@ -15,3 +16,4 @@ two:
   password_digest: <%= BCrypt::Password.create('secret') %>
   office: 1
   phone: MyString
+  confirm_hash: sjdlfgjasfd

@@ -6,11 +6,13 @@ class UserNotifier < ActionMailer::Base
   #
   #   en.user_notifier.confirmation.subject
   #
-  def confirmation
+  def confirmation(user)
     
-    @greeting = "hi"
+    @user = user
 
-    mail to: "dmanishchenko@gmail.com", subject: 'confirmation'
+    @confirm_path = "http://localhost:3000/" + users_confirm_path + "?id="+@user.id.to_s+"&hash=" + @user.confirm_hash
+
+    mail to: "dmanishchenko@gmail.com", subject: 'Email confiramtion'
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -21,6 +23,6 @@ class UserNotifier < ActionMailer::Base
   def greeting
     @greeting = "Hi"
 
-    mail to: "dmanishchenko@gmail.com", subject: 'greeting'
+    mail to: "dmanishchenko@gmail.com", subject: 'Greeting'
   end
 end
