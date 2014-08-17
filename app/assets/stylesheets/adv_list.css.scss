@@ -7,8 +7,18 @@
 		padding-bottom: 0.5em;
 		font: 150% sans-serif;
 		color: gray;
+		
+	}
+
+	.showmore {
+		width: 100%;	
+	}
+
+	.topline {
+		color: gray;
 		border-bottom: 2px solid silver;
 	}
+	
 	/* Запись в каталоге store */
 	.entry {
 		overflow: auto;

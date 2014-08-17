@@ -5,7 +5,8 @@
 <h1 class = "doted_header"><%= @advert.title %></h1>
 
 
-<%= image_tag(@advert.get_image_url, :class => "style_image") %>
+<!-- <%= image_tag(@advert.get_image_url, :class => "style_image") %> -->
+<%= image_tag @advert.get_image_url %>
 
 <p>
   <strong>Описание:</strong>

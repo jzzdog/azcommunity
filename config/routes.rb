@@ -5,9 +5,12 @@ Azcommunity::Application.routes.draw do
   resources :messages
 
   get "adv_list/index"
+  post "adv_list/index"
   get "adv_list/myindex"
+  get "adv_list/info"
   get "adverts/new"
   post "adverts/new"
+  post "adverts/edit"
   resources :adverts
   
   #get 'login' => 'sessions#new'

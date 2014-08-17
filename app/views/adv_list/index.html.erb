@@ -2,7 +2,13 @@
 <p id="notice"><%= notice %> </p>
 <% end %>
 
-<h1><%= @header_text %></h1>
+
+<table width="100%" class="topline">
+	<tr>
+		<td><h1><%= @header_text %></h1></td>
+		<td width="60px"><%= button_to 'Подать объявление', adverts_new_path %></td>		
+	</tr>
+</table>
 
 <% if @adv %>
 <% @adv.each do |adv| %>
@@ -29,4 +35,6 @@
 
 <p> </p>
 
-<%= button_to 'Подать объявление', adverts_new_path %>
+<% if not params[:only_my] %>
+	<span><%= button_to 'Показать еще', adv_list_index_path(limit: (params[:limit]||"5").to_i + 5 ), :class => "showmore" %> </span>
+<% end %>
