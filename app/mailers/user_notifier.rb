@@ -12,7 +12,7 @@ class UserNotifier < ActionMailer::Base
 
     @confirm_path = "http://localhost:3000/" + users_confirm_path + "?id="+@user.id.to_s+"&hash=" + @user.confirm_hash
 
-    mail to: "dmanishchenko@gmail.com", subject: 'Email confiramtion'
+    mail to: @user.mail, subject: 'Email confiramtion'
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
