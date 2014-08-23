@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #http://media.pragprog.com/titles/rails4/code/rails40/depot_r/app/controllers/sessions_controller.rb
 class SessionsController < ApplicationController
   skip_before_action :authorize

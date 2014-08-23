@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateAdverts < ActiveRecord::Migration
   def change
     create_table :adverts do |t|
