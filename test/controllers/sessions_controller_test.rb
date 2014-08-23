@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #http://media.pragprog.com/titles/rails4/code/rails40/depot_r/test/controllers/sessions_controller_test.rb
 require 'test_helper'
 

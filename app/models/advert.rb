@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Advert < ActiveRecord::Base
 	has_attached_file :photo, :styles => { :medium => "300x300>"}, 
 		#:default_url => "/images/:style/missing.png"

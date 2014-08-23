@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AdvertsController < ApplicationController
   before_action :set_advert, only: [:show, :edit, :update, :destroy]  
 

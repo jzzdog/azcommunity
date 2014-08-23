@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UserNotifier < ActionMailer::Base
   default from: "allianz.community@gmail.com"
 

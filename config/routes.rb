@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Azcommunity::Application.routes.draw do
 
   get "forum/index"
