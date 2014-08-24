@@ -55,3 +55,6 @@ gem "paperclip", '~> 4.2.0'
 
 #gem 'passenger', '~> 4.0.48'
 
+group :production do
+	gem 'mysql2'
+end
