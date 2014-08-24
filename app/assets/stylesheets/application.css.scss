@@ -44,7 +44,7 @@
 	background: silver;	
 
 	#main {
-		margin-left: 12em;
+		margin-left: 13em;
 		padding: 1em;
 		background: white;		
 	}
@@ -52,7 +52,7 @@
 	#side {
 		float: left;
 		padding: 1em 2em;
-		width: 8em;
+		width: 9em;
 		background: silver;
 
 
@@ -61,6 +61,7 @@
 
 			li {
 				list-style: none;
+				margin-top: 8px;
 				a {
 					color: #103387;
 					font-size: small;

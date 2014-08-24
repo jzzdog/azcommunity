@@ -16,9 +16,11 @@
 		<%= image_tag(adv.get_image_url) %>		
 		<h3><%= link_to adv.title, adv, :style=>"color:gray"%></h3>
 		<p><%= sanitize(adv.description)%></p>
-		<div class="price_line">
-			<span class="price"><%= sprintf("%0.02f руб.", adv.price) %></span>
-		</div>
+		<% if adv.price %>
+			<div class="price_line">
+				<span class="price"><%= sprintf("%0.02f руб.", adv.price) %></span>
+			</div>
+		<% end %>
 
 		<div class="userinfo">
 			<span><%= User.find_by(id: adv.user_id).get_user_info() %></span>						

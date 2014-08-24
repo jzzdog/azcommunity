@@ -1,0 +1,29 @@
+
+<h1 class="topline">Приглашения</h1>
+
+
+<p>
+Пригласить пользователя
+</p>
+
+<%= form_tag do %>		
+	<div>
+		<%= label_tag :email, 'Email:' %> 
+		<%= text_field_tag :email, params[:email] %>
+		<%= submit_tag "Отправить приглашение"%>
+	</div>
+	
+<% end %>
+
+<% if flash[:alert] %>
+	<p id="notice"><%= flash[:alert] %></p>
+<% else %>
+	<% if notice %>
+		<p id="notice"><%= notice %> </p>
+	<% end %>
+<% end %>
+
+<br>
+<br>
+<br>
+<br>

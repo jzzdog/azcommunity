@@ -7,9 +7,15 @@ class ApplicationController < ActionController::Base
 
   protected
   	def authorize
-  		unless User.find_by(id: session[:user_id])
-  		#redirect_to sessions_create_url, notice: "Пожалуйста, пройдите авторизацию"
+  		unless User.find_by(id: session[:user_id])  	
   		redirect_to login_url, notice: "Пожалуйста, пройдите авторизацию"
   	end
+  end
+
+  protected
+    def authorize_admin
+      unless (User.find_by(id: session[:user_id]).name == 'admin')
+        redirect_to login_url, notice: "Для данной операции требуется вход под учетной записью администратора"
+    end
   end
 end

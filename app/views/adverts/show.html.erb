@@ -13,10 +13,13 @@
   <%= sanitize(@advert.description) %>
 </p>
 
+
+<%if @advert.price%>
 <p>
   <strong>Цена:</strong>
   <%= sprintf("%0.02f руб.", @advert.price) %>
 </p>
+<% end %>
 
 <p>
   <strong>Пользователь:</strong>

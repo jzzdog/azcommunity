@@ -5,10 +5,17 @@ Azcommunity::Application.routes.draw do
   post "forum/index"
   resources :messages
 
+  controller :adv_list do
+    get 'invite' => :invite
+    post 'invite' => :send_invite    
+  end  
+  resources :adverts
+
   get "adv_list/index"
   post "adv_list/index"
   get "adv_list/myindex"
   get "adv_list/info"
+  get "adv_list/invite"
   get "adverts/new"
   post "adverts/new"
   post "adverts/edit"
