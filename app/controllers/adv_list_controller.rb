@@ -33,8 +33,8 @@ class AdvListController < ApplicationController
     @email = params[:email]
 
     if ( @email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i )      
-      #@user = User.find_by(id: session[:user_id])
-      #UserNotifier.confirmation(@user).deliver
+      @user = User.find_by(id: session[:user_id])
+      UserNotifier.invitation(@email, @user).deliver
       redirect_to adv_list_invite_path, alert: "Приглашение успешно отправлено!"
     else 
       redirect_to adv_list_invite_path, alert: "Ошибка отправки приглашения: Неверный Email!"       

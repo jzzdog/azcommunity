@@ -32,8 +32,9 @@ class UserNotifier < ActionMailer::Base
     mail to: "dmanishchenko@gmail.com", subject: 'Invitation to Allianz Community'
   end
 
-  def invitation(user)
+  def invitation(email, user)
 
+    @email = email
     @user = user
 
     if Rails.env.production?
@@ -44,6 +45,6 @@ class UserNotifier < ActionMailer::Base
 
     @reg_path = @root_path + "users/new"    
 
-    mail to: @user.mail, subject: 'Invitation to Allianz Community'
+    mail to: @email, subject: 'Invitation to Allianz Community'
   end
 end
