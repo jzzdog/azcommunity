@@ -71,19 +71,17 @@ User.create!(id: 2,
 Message.delete_all
 Message.create!(title: 'Всем привет!',
   body: 
-    %{<p>
+    %{
         Хочу поприветствовать всех коллег и пожелать хорошего дня и отличного
         настроения на всю неделю!
-      </p>},  
+      },  
   user_id: 2,
   office_id: 1,
   status: 0)
 
 Message.create!(title: 'Всем привет!',
   body: 
-    %{<p>
-        Привет Дейв!
-      </p>},  
+    %{Привет Дейв!},  
   user_id: 1,
   office_id: 1,
   status: 0)

@@ -2,7 +2,7 @@
 
 one:
   id: 1
-  name: jzzddog
+  name: admin
   mail: dmanishchenko@gmail.com
   password_digest: <%= BCrypt::Password.create('1qazXSW@') %>
   office: 1
