@@ -19,4 +19,9 @@ Azcommunity::Application.configure do
 	}
 
 	#config.action_mailer.raise_delivery_errors = true
+	#config.time_zone = 'Moscow' # +0400
+	config.time_zone = "(GMT+04:00) Moscow"
+
 end
+
+Time::DATE_FORMATS[:ru_datetime] = "%Y.%m.%d в %k:%M:%S"

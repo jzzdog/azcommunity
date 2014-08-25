@@ -17,7 +17,7 @@
 		<p><%= msg.body %></p>	
 			
 		<div class="userinfo">			
-			<span><%= msg.created_at.strftime("%d.%m.%Y в %k:%m") %></span>
+			<span><%= msg.created_at.to_s(:ru_datetime)%></span>
 			<% if session[:user_id] == msg.user_id %>
 			  <span><%= link_to '', edit_message_path(msg) %> </span>
 			<% end %>
