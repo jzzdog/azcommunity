@@ -11,7 +11,12 @@
 </div>
 
 <% if @msg %>
-<% @msg.each do |msg| %>
+<% @msg.each_with_index do |msg, index| %>
+
+	<!--< if index  == (params[:limit]||"5").to_i - 5 %> 
+		  <div id="anchor"> </div>
+ 	< end %> -->
+
 	<div class="entry">		
 		<h3><%= User.find_by(id: msg.user_id).get_user_info() %><br></h3>		
 		<p><%= msg.body %></p>	
@@ -21,18 +26,19 @@
 			<% if session[:user_id] == msg.user_id %>
 			  <span><%= link_to '', edit_message_path(msg) %> </span>
 			<% end %>
-		</div>
+		</div>		
 	</div>
 <% end %>
 <% end %>
 
-<!--
-<div id="#section1">some stuff</div>
-<script type="text/javascript">
-document.location.hash="#section1"; 
-</script>
--->
 
-<span><%= button_to 'Показать еще', forum_index_path(limit: (params[:limit]||"5").to_i + 5 ), :class => "showmore" %> </span>
+<% if Message.count > (params[:limit]||"5").to_i %>
+<span><%= button_to 'Показать еще', forum_index_path(limit: (params[:limit]||"5").to_i + 5 ) + "#anchor", :class => "showmore" %> </span>
+<% end %>
+
 
 <p> </p>
+<!--<script type="text/javascript">
+ document.location.hash="section1"; 
+
+</script>-->

@@ -37,6 +37,8 @@
 
 <p> </p>
 
-<% if not params[:only_my] %>
-	<span><%= button_to 'Показать еще', adv_list_index_path(limit: (params[:limit]||"5").to_i + 5 ), :class => "showmore" %> </span>
+<% if Advert.count > (params[:limit]||"5").to_i %>
+	<% if not params[:only_my] %>
+		<span><%= button_to 'Показать еще', adv_list_index_path(limit: (params[:limit]||"5").to_i + 5 ), :class => "showmore" %> </span>
+	<% end %>
 <% end %>
