@@ -1,4 +1,4 @@
-<%= form_for(@message) do |f| %>
+<%= form_for(@message, remote: false) do |f| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
@@ -11,12 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :"Новое сообщение" %><br>
-    <%= f.text_area :body, cols: 60, rows: 3%>
+  <div class="entry">
+    <div class="field">
+      <%= f.label :"Новое сообщение" %><br>
+      <%= f.text_area :body, cols: 60, rows: 3%>
+    </div>
+
+    <div class="actions">
+      <%= f.submit :Отправить %>
+    </div>           
+
   </div>
   
-  <div class="actions">
-    <%= f.submit :Отправить %>
-  </div>
 <% end %>
+
+<% if @msg_list %>
+  <% @msg_list.each_with_index do |msg, index| %>
+    <div class="entry">  
+      <h3><%= User.find_by(id: msg.user_id).get_user_info() %><br></h3>   
+      <p><%= msg.body %></p>  
+          
+      <div class="userinfo">      
+          <span><%= msg.created_at.to_s(:ru_datetime)%></span>
+          <% if session[:user_id] == msg.user_id %>
+            <span><%= link_to '', edit_message_path(msg) %> </span>
+          <% end %>
+      </div>    
+    </div>
+  <% end %>
+<% end %>
+
+
+<% if Message.count > @msg_list.count %>
+  <span>
+    <%= button_to 'Показать еще', forum_showmore_path(limit: @msg_list.count + 5 ), :class => "showmore", remote: true %> 
+  </span>
+<% end %>
+
+
+

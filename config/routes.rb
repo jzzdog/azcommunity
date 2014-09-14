@@ -2,7 +2,7 @@
 Azcommunity::Application.routes.draw do
 
   get "forum/index"
-  post "forum/index"
+  post "forum/showmore"
   resources :messages
 
   controller :adv_list do

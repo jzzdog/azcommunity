@@ -33,8 +33,14 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to forum_index_url}
         
+        #@limit = params[:limit].to_i || 5
+        #@msg_list = Message.order(created_at: :desc).limit(5)
+        #@message = Message.new
+
+        format.html { redirect_to forum_index_url}        
+        format.js
+        #format.json { render action: 'show', status: :created, location: @message }
       else
         format.html { render action: 'new' }
         format.json { render json: @message.errors, status: :unprocessable_entity }

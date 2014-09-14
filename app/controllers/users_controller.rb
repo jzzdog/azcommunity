@@ -59,7 +59,9 @@ class UsersController < ApplicationController
       #else        
         if @user.save        
           UserNotifier.confirmation(@user).deliver
-          format.html { redirect_to login_url, notice: 'Ваша учетная запись успешно создана! Для завершения регистрации перейдите по ссылке, указанной в письме. (Возможно попадание в спам!)' }
+          format.html { redirect_to login_url, notice: %{Ваша учетная запись успешно создана! 
+            Для завершения регистрации перейдите по ссылке, указанной в письме. 
+            Если не получили письмо, проверьте не попало ли оно в спам.}
           format.json { render action: 'show', status: :created, location: @user }
         else
           format.html { render action: 'new' }
