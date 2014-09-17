@@ -1,21 +1,40 @@
 # -*- encoding : utf-8 -*-
 class AdvListController < ApplicationController
-  def index
-
-    if params[:limit]     
-      @limit = params[:limit].to_i
-    else
-      @limit = 5    
-    end
+  def index  
+    
+    
 
   	if (params[:only_my] == "1")
   		@header_text = "Мои объявления"
-  		@adv = Advert.where(user_id: session[:user_id]).order(created_at: :desc).limit(@limit)
+  		@adv = Advert.where(user_id: session[:user_id]).order(created_at: :desc).limit(5)
   	else
   		@header_text = "Объявления"
-  		@adv = Advert.where(status: 1).order(created_at: :desc).limit(@limit)
+  		@adv = Advert.where(status: 1).order(created_at: :desc).limit(5)
   	end
   end  
+
+  def showmore
+    respond_to do |format|
+      if params[:limit]     
+        @limit = params[:limit].to_i
+      else
+        @limit = 5    
+      end
+      
+      if (params[:only_my] == "1")
+        @header_text = "Мои объявления"
+        @adv = Advert.where(user_id: session[:user_id]).order(created_at: :desc).limit(@limit)
+      else
+        @header_text = "Объявления"
+        @adv = Advert.where(status: 1).order(created_at: :desc).limit(@limit)
+      end
+      #format.html { redirect_to forum_index_url limit: @limit}
+      format.js
+      #format.json { render action: 'index', status: :created, location: @message }      
+
+    end
+    
+  end
 
   def myindex  	
   	redirect_to adv_list_index_path only_my: "1"

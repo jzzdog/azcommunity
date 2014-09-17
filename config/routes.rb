@@ -5,14 +5,14 @@ Azcommunity::Application.routes.draw do
   post "forum/showmore"
   resources :messages
 
+  get "adv_list/index"
+  post "adv_list/showmore"
+
   controller :adv_list do
     get 'invite' => :invite
-    post 'invite' => :send_invite    
+    post 'invite' => :send_invite        
   end  
-  resources :adverts
-
-  get "adv_list/index"
-  post "adv_list/index"
+  #resources :adverts  
   get "adv_list/myindex"
   get "adv_list/info"
   get "adv_list/invite"
