@@ -15,12 +15,8 @@ class AdvListController < ApplicationController
 
   def showmore
     respond_to do |format|
-      if params[:limit]     
-        @limit = params[:limit].to_i
-      else
-        @limit = 5    
-      end
-      
+      @limit = params[:limit] ? params[:limit].to_i : 5
+               
       if (params[:only_my] == "1")
         @header_text = "Мои объявления"
         @adv = Advert.where(user_id: session[:user_id]).order(created_at: :desc).limit(@limit)

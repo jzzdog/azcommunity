@@ -41,11 +41,14 @@
 
 #columns {
 	background: silver;	
+	border: 1px solid gray;
 
 	#main {
 		margin-left: 13em;
 		padding: 1em;
 		background: white;		
+		border: 1px solid gray;
+
 	}
 
 	#side {
@@ -53,7 +56,6 @@
 		padding: 1em 2em;
 		width: 9em;
 		background: silver;
-
 
 		ul {
 			padding: 0;

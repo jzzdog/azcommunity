@@ -33,8 +33,7 @@
 <br/>
 <% end %>	
 
-
-<% if Advert.count > @adv.count %>
+<% if Advert.where('status=1').count > @adv.count %>
 	<% if not params[:only_my] %>
 		<span><%= button_to 'Показать еще', adv_list_showmore_path(limit: @adv.count + 5 ), :class => "showmore", remote: true %> </span>
 	<% end %>
