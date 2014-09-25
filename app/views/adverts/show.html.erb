@@ -1,48 +1,53 @@
-<% if notice %>
-<p id="notice"><%= notice %> </p>
-<% end %>
+<%- model_class = Advert -%>
+<div class="page-header">
+  <h2><%= @advert.title %></h2>
+</div>
 
-<h1 class = "doted_header"><%= @advert.title %></h1>
+<%= image_tag @advert.get_image_url, :class => "img-polaroid" %>
 
-
-<!-- <%= image_tag(@advert.get_image_url, :class => "style_image") %> -->
-<%= image_tag @advert.get_image_url %>
-
-<p>
-  <strong>Описание:</strong>
-  <%= sanitize(@advert.description) %>
-</p>
+<dl class="dl-horizontal">
+  <p>
+    <dt><strong>Описание:</strong></dt>
+    <dd><%= sanitize(@advert.description) %></dd>
+  </p>
 
 
-<%if @advert.price%>
-<p>
-  <strong>Цена:</strong>
-  <%= sprintf("%0.02f руб.", @advert.price) %>
-</p>
-<% end %>
+  <%if @advert.price%>
+  <p>
+    <dt><strong>Цена:</strong></dt>
+    <dd><span class="label label-info"><%= sprintf("%0.02f руб.", @advert.price) %></span> </dd>
+  </p>
+  <% end %>
 
-<p>
-  <strong>Пользователь:</strong>
-  <%= User.find_by(id: @advert.user_id).get_user_info() %>
-</p>
+  <p>
+    <dt><strong>Пользователь:</strong></dt>
+    <dd><%= User.find_by(id: @advert.user_id).get_user_info() %></dd>
+  </p>
 
-<p>
-  <strong>Контактный email:</strong>
-  <%= User.find_by(id: @advert.user_id).mail %>
-</p>
+  <p>
+    <dt><strong>Контактный email:</strong></dt>
+    <dd><%= User.find_by(id: @advert.user_id).mail %></dd>
+  </p>
 
-<p>
-  <strong>Дата создания:</strong>
-  <%= @advert.created_at.strftime("%d.%m.%Y в %k:%m") %>
-</p>
+  <p>
+    <dt><strong>Дата создания:</strong><dt/>
+    <dd><%= @advert.created_at.strftime("%d.%m.%Y в %k:%m") %></dd>
+  </p>
 
-<p>
-  <strong>Статус объявления:</strong>
-  <%= @advert.get_status_name %>
-</p>
+  <p>
+    <dt><strong>Статус объявления:</strong></dt>
+    <dd><%= @advert.get_status_name %></dd>
+  </p>
+
+</dl>
 
 
-<% if session[:user_id] == @advert.user_id %>
-  <%= link_to 'Редактировать', edit_advert_path(@advert) %> |
-<% end %>
-<%= link_to 'Назад', adv_list_index_path %>
+
+<div class="form-actions">
+  <%= link_to 'Назад', adv_list_index_path, :class => 'btn' %>
+
+  <% if session[:user_id] == @advert.user_id %>
+    <%= link_to 'Редактировать', edit_advert_path(@advert), :class => 'btn' %>     
+  <% end %>
+  
+</div>

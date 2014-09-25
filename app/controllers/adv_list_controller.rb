@@ -1,16 +1,18 @@
 # -*- encoding : utf-8 -*-
 class AdvListController < ApplicationController
-  def index  
-    
-    
+  def index          
 
   	if (params[:only_my] == "1")
   		@header_text = "Мои объявления"
+      @info = "В разделе отображаются все объявления, которые Вы ранее добавили. Все объявления из этого 
+      списка доступны для редактирования"
   		@adv = Advert.where(user_id: session[:user_id]).order(created_at: :desc).limit(5)
   	else
   		@header_text = "Объявления"
+      @info = "В разделе отображаются последние объявления, добавленные пользователями"
   		@adv = Advert.where(status: 1).order(created_at: :desc).limit(5)
   	end
+
   end  
 
   def showmore
@@ -32,9 +34,10 @@ class AdvListController < ApplicationController
     
   end
 
-  def myindex  	
+  def myindex  	    
   	redirect_to adv_list_index_path only_my: "1"
   	#@adv = Advert.find_by(user_id: 1)
+
   end  
 
   def info    

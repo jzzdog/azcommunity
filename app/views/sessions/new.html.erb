@@ -1,21 +1,19 @@
 <!--http://media.pragprog.com/titles/rails4/code/rails40/depot_r/app/views/sessions/new.html.erb -->
 
 
+  <h3> Авторизация </h3>
+
+
 <div class="azcommunity_form">
-	<% if flash[:alert] %>
-		<p id="notice"><%= flash[:alert] %></p>
-	<% else %>
-		<% if notice %>
-			<p id="notice"><%= notice %> </p>
-		<% end %>
-	<% end %>
+	
 
 	<%= form_tag do %>
 		<fieldset>
-			<legeng> Авторизация </legent>
+
+			
 
 			<div>
-				<%= label_tag :name, 'Имя:' %> &nbsp;&nbsp;&nbsp;&nbsp;
+				<%= label_tag :name, 'Имя:' %>
 				<%= text_field_tag :name, params[:name] %>
 			</div>
 
@@ -24,9 +22,11 @@
 				<%= password_field_tag :password, params[:password] %>
 			</div>
 
-			<div>
-				<%= submit_tag "Войти" %>
-				<a href=<%= users_new_url%>>Зарегистрироваться</a>				
+			<div>				
+				<table><tr>
+					<td><%= button_to "Войти", login_url, :class => "btn btn-success" %> </td>
+					<td valign="top"><a href=<%= users_new_url%>>&nbsp;&nbsp;Зарегистрироваться</a></td>
+				</tr></table>
 			</div>
 		</fieldset>
 	<% end %>

@@ -1,29 +1,29 @@
-
-<h1 class="topline">Приглашения</h1>
-
+<div class="page-header">
+  <h2>Приглашение</h2>
+</div>
 
 <p>
 Пригласить пользователя
 </p>
 
-<%= form_tag do %>		
-	<div>
-		<%= label_tag :email, 'Email:' %> 
-		<%= text_field_tag :email, params[:email] %>
-		<%= submit_tag "Отправить приглашение"%>
-	</div>
+<%= form_tag nil, :html => { :class => 'form-horizontal' } do %>		
+
+<div class="well">	  	
+  <table>
+  	<tr>
+
+
+
+  	<td><%= label_tag :email, 'Email:', :class => 'control-label' %></td>
+    <td><%= text_field_tag :email, params[:email] %> </td>
+	<td valign="top"><%= submit_tag "Отправить приглашение", :class => 'btn btn-primary'%> </td>
+		
+	
+
+  </table>
+</div>
 	
 <% end %>
 
-<% if flash[:alert] %>
-	<p id="notice"><%= flash[:alert] %></p>
-<% else %>
-	<% if notice %>
-		<p id="notice"><%= notice %> </p>
-	<% end %>
-<% end %>
 
-<br>
-<br>
-<br>
-<br>
+<br/>

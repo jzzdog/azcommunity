@@ -1,57 +1,137 @@
 <!DOCTYPE html>
-<html>
-<head>		
-  <title>Allianz community</title>
-  <%= stylesheet_link_tag    "application", media: "all", 
-  	"data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", 
-  	"data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body class='<%= controller.controller_name %>'>
-	<table id="bannertable" width="100%">
-		<tr>
-			<td>
-				<div id="banner">
-					<%= image_tag("logo_community.png") %>		
-					<%= @page_title || "Сообщество сотрудников Альянс"%>
-				</div>
-			</td>
-			<td width="60px">
-				<% if User.find_by(id: session[:user_id]) %>						
-					<font> <%= User.find_by(id: session[:user_id]).name %> </font>
-					<a href=<%= logout_url%>><font>Выйти</font></a>
-				<% else %>
-					<a href=<%= login_url%>><font>Войти</font></a>				
-				<% end %>
-			</td>			
-		</tr>
-	</table>
-	<div id="columns" height="900px">
-		<div id="side">
-			<ul>								
-				<li><a href=<%= adv_list_index_path%>>Все объявления</a></li>
-				<li><a href=<%= adv_list_myindex_path%>>Мои объявления</a></li>
-				<li><a href=<%= forum_index_path%>>Форум</a></li>				
-			</ul>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Allianz community" %></title>
+    <%= csrf_meta_tags %>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <!-- Size should be 144 x 144 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
+
+    <!-- For iPhone with high-resolution Retina display: -->
+    <!-- Size should be 114 x 114 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
+
+    <!-- For first- and second-generation iPad: -->
+    <!-- Size should be 72 x 72 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
+
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <!-- Size should be 57 x 57 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+
+    <!-- For all other devices -->
+    <!-- Size should be 32 x 32 pixels -->
+    <%= favicon_link_tag 'favicon.png', :rel => 'shortcut icon' %>
+
+    <%= javascript_include_tag "application" %>
+  </head>
+  <body>
+
+    <div class="navbar navbar-fixed-top">      
+      <div class="navbar-inner">
+        <div class="container">         
+
+          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+            <span class="icon-bar"></span>            
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>          
+
+          <a class="brand" href="#"><%= image_tag("logo_community.png", size: "90x24" ) %> </a>
+          <div class="container nav-collapse">
+            <ul class="nav">
+              <%= menu_divider %>
+              <li><%= link_to "Объявления", adv_list_index_path  %></li>
+              <li><%= link_to "Мои объявления", adv_list_myindex_path  %></li>              
+              <li><%= link_to "Чат", forum_index_path  %></li>
+              <%= menu_divider %>
+              <li><%= link_to "О сообществе", adv_list_info_path  %></li>
+              <li><%= link_to "Приглашения", adv_list_invite_path  %></li>
+              <%= menu_divider %>
+            </ul>
+            <% if User.find_by(id: session[:user_id]) %>
+                <!--<table class="pull-right"> -->
+                <table>
+                  <tr><td><i class="icon-user"><%=link_to " " + User.find_by(id: session[:user_id]).name , adv_list_invite_path %></td></tr>
+                  <tr><td><i class="icon-off"></i><%= link_to " Выйти", logout_url %></td></tr>
+                </table>
+              <% else %>              
+                <!--<%= link_to "Войти", login_url %>-->
+            <% end %>
+            
+          </div><!--/.nav-collapse -->          
 
 
-			<ul>
-				<li><a href=<%= adv_list_info_path%>>О&nbsp;сообществе</a></li>
-				<li><a href=<%= adv_list_invite_path%>>Приглашения</a></li>
-			</ul>
-		</div>
-		<div id="main">
-			<%= yield%>
-		</div>
-	</div>
+        </div>
+      </div>
 
-	
+      
+    </div>
 
-</body>
+    <br>
+    <br>
+    <br>
+    
+
+    <div class="container">
+
+        <div class="row">                    
 
 
-<p> ©2014 All rights reserved</p>	
-<p>	Contact us: allianz.community@gmail.com </p>
+          <div class="span9">
+            
 
+            <%= bootstrap_flash %>
+
+            <%= yield %>
+
+          </div>
+          <%if @info%>
+            <div class="span3">                        
+              <br/>
+              <div class="well sidebar-nav">
+                <!--<span class="label label-info">Информация</span>-->
+                <p class="bg-info"> <%=@info%> </p>              
+                <h4>Ссылки</h4>               
+                <ul class="nav nav-list">                
+                  <%if controller.controller_name == 'adv_list' %> 
+                    
+                    <li><%= link_to "Добавить объявление", adv_list_index_path %></li>
+                    <li><%= link_to "Все объявления", adv_list_index_path  %></li>
+                    <li><%= link_to "Мои объявления", adv_list_myindex_path  %></li>              
+                  <% end %>  
+                  <%if controller.controller_name == 'sessions' %> 
+                    <li><%= link_to "Зарегистрироваться", users_new_url %></li>                  
+                  <% end %>
+                  <%if controller.controller_name == 'users' %>                   
+                    <li><%= link_to "Войти", login_url %></li>
+                  <% end %>
+                  
+                </ul>
+                
+              </div><!--/.well -->
+            </div><!--/span-->
+          <%end%>
+        </div><!--/row-->
+
+      <footer>
+        <p>&copy; Allianz Community 2014</p>
+        <p>Contact us: allianz.community@gmail.com </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+  </body>
 </html>

@@ -2,15 +2,16 @@
 <p id="notice"><%= notice %> </p>
 <% end %>
 
+<div class="page-header1">  
+	<table width="100%" class="topline">
+		<tr>
+			<td><h1><small><%= @header_text %></small></h1></td>
+			<td width="60px"><%= button_to 'Подать объявление', adverts_new_path, :class => "btn btn-warning" %></td>		
+		</tr>
+	</table>
+</div>
 
-<table width="100%" class="topline">
-	<tr>
-		<td><h1><%= @header_text %></h1></td>
-		<td width="60px"><%= button_to 'Подать объявление', adverts_new_path, :class => "highlight_bt" %></td>		
-	</tr>
-</table>
-
-<div id="form_block">
+<div class="well well-small" id="form_block">
 <%= render 'form' %>
 </div>
 

@@ -3,7 +3,8 @@
 class SessionsController < ApplicationController
   skip_before_action :authorize
   def new
-  	
+  	@info = "Введите свой логин и пароль, если вы уже участник сообщества. 
+      Либо зарегистрируйтесь, если у вас еще нет учетной записи"    
   end
 
   def create

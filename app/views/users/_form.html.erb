@@ -1,42 +1,43 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :Имя, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :mail, :class => 'text_field', :type => "email"%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :Пароль, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.password_field :password, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :Подтверждение, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.password_field :password_confirmation, :class => 'text_field'%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :Офис, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :office, options_for_select([["Озерковская Набережная", 1], ["Варшавское Шоссе", 2]]) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :Телефон, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone, :class => 'text_field' %>
+    </div>
+  </div>    
 
-  <div class="field">
-    <%= f.label :Имя %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :mail %>
-  </div>
-  <div class="field">
-    <%= f.label :Пароль %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div>
-    <%= f.label :Подтверждение %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="field">
-    <%= f.label :Офис %><br>
-    <%= f.select :office, options_for_select([["Озерковская Набережная", 1], ["Варшавское Шоссе", 2]]) %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :Телефон %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit "Зарегистрироваться", :class => 'btn btn-primary' %>
+    <%= link_to "Отмена", login_url, :class => 'btn' %>
   </div>
 <% end %>

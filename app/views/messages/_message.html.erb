@@ -1,44 +1,35 @@
-<%= form_for(@message, remote: false) do |f| %>
-  <% if @message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+<%= form_for(@message, remote: false) do |f| %>  
 
-      <ul>
-      <% @message.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="well">
+    
+      <p>Новое сообщение<p>
+      <%= f.text_area :body, cols: 60, rows: 3%>    
 
-  <div class="entry">
-    <div class="field">
-      <%= f.label :"Новое сообщение" %><br>
-      <%= f.text_area :body, cols: 60, rows: 3%>
-    </div>
-
-    <div class="actions">
-      <%= f.submit :Отправить %>
+    <div class="form-actions1">
+      <%= f.submit :Отправить, :class => 'btn btn-primary' %>
     </div>           
 
   </div>
   
 <% end %>
 
-<% if @msg_list %>
-  <% @msg_list.each_with_index do |msg, index| %>
-    <div class="entry">  
-      <h3><%= User.find_by(id: msg.user_id).get_user_info() %><br></h3>   
-      <p><%= msg.body %></p>  
-          
-      <div class="userinfo">      
-          <span><%= msg.created_at.to_s(:ru_datetime)%></span>
-          <% if session[:user_id] == msg.user_id %>
-            <span><%= link_to '', edit_message_path(msg) %> </span>
-          <% end %>
-      </div>    
-    </div>
-  <% end %>
+<% if @msg_list %>   
+  <table class="table table-striped">    
+    <% @msg_list.each_with_index do |msg, index| %>
+    <tr><td>
+      <div>  
+        <em><p class="text-warning1"><%= User.find_by(id: msg.user_id).get_user_info() %></p></em>
+        <p><%= msg.body %>
+            <span class="muted"><small><%= msg.created_at.to_s(:ru_datetime)%></small></span>
+            <% if session[:user_id] == msg.user_id %>
+              <span><%= link_to '', edit_message_path(msg) %> </span>
+            <% end %>
+        </p>
+
+      </div>
+    <% end %>
+  </td></tr>
+  </table>
 <% end %>
 
 

@@ -19,6 +19,8 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @info = "Регистрироваться в сообществе могут только сотрудники компании. 
+    После регистрации на почтовый приходит специальное подтверждение."
   end
 
   # GET /users/confirm

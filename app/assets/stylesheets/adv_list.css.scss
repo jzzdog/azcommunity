@@ -2,17 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .adv_list {
-	h1 {
-		margin:0;
-		padding-bottom: 0.5em;
-		font: 150% sans-serif;
-		color: gray;
-		
-	}
+
 
 	.showmore {
 		width: 100%;			
 	}	
+
+	.adv_img {
+			width: 80px;
+			margin-right: 5px;
+			margin-bottom: 5px;
+			position: absolute;
+		}
 
 	.topline {
 		color: gray;

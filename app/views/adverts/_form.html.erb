@@ -1,52 +1,48 @@
-<%= form_for @advert, :html => { :multipart => true }  do |f| %>
-  <% if @advert.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@advert.errors.count, "error") %> prohibited this advert from being saved:</h2>
+<%= form_for @advert, :html => { :class => 'form-horizontal' } do |f| %>
 
-      <ul>
-      <% @advert.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="control-group">
+    <%= f.label :Заголовок, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, size: 35 %>
     </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :Описание, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, cols: 35, rows: 10 %>
+    </div>
+  </div>
+
+
+  <div class="control-group">    
+    <%= f.label :Изображение, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :photo %>    
+    </div>
+  </div>
+
+  <div class="control-group">          
+    <%= f.label :Стоимость, :class => 'control-label' %>
+    <div class="controls">
+        <%= f.text_field :price, size: 12%> руб.
+    </div>
+  </div>    
+
+  <% if params[:action] == "edit" %>
+    <div class="control-group">
+      <%= f.label :Статус, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :status, options_for_select([["Активное", 1], ["Истекшее", 2], ["Закрытое", 3]]) %>  
+      </div>
+    </div>    
   <% end %>
 
-  <div class="field">
-    <%= f.label :Заголовок %><br>
-    <%= f.text_field :title, size: 35 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :Описание %><br>
-    <%= f.text_area :description, cols: 35, rows: 15 %>
-  </div>
-
-
-  <table>
-    <tr>
-      <td><%= f.label :Изображение %><td>
-      <td><%= f.file_field :photo %><td>
-    </tr>
-
-    <tr>
-      <td><%= f.label :Стоимость %><td>
-      <td><%= f.text_field :price, size: 12%> руб.<td>
-    </tr>
-
+  <div class="form-actions">
+    <%= f.submit 'Сохранить', :class => 'btn btn-primary' %>
     <% if params[:action] == "edit" %>
-    <tr>
-      <td><%= f.label :Статус %><td>
-      <td><%= f.select :status, options_for_select([["Активное", 1], ["Истекшее", 2], ["Закрытое", 3]]) %><td>
-    </tr>
+      <%= link_to 'Просмотр', @advert, :class => 'btn' %>
     <% end %>
-
-  </table>
-
-  <br>
-
-  
-
-  <div class="actions">
-    <%= f.submit @action_name %>
+    <%= link_to 'Объявления', adv_list_index_path, :class => 'btn' %>
   </div>
 <% end %>

@@ -14,7 +14,8 @@ class Advert < ActiveRecord::Base
 			@url = image_url
 		else			
 			if photo.url(:medium) != ''
-				@url = photo.url(:medium) 
+				#@url = photo.url(:medium) 
+				@url = 'box_empty.png'
 			else
 				#@url = 'empty_product.jpg'
 				@url = 'Box_Empty.png'
