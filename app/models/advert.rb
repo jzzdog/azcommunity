@@ -10,18 +10,8 @@ class Advert < ActiveRecord::Base
 	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
 
 	def get_image_url
-		if image_url 
-			@url = image_url
-		else			
-			if photo.url(:medium) != ''
-				#@url = photo.url(:medium) 
-				@url = 'box_empty.png'
-			else
-				#@url = 'empty_product.jpg'
-				@url = 'Box_Empty.png'
-			end
-		end
-		@url
+		return image_url if image_url
+		photo.url(:medium) ? photo.url(:medium) : 'Box_Empty.png'
 	end
 
 	def get_status_name()
