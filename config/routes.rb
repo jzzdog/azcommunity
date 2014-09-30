@@ -1,8 +1,16 @@
 # -*- encoding : utf-8 -*-
 Azcommunity::Application.routes.draw do
 
+  
+  resources :comments
+  get "posts/index"
+  resources :posts
+
   get "forum/index"
-  post "forum/showmore"
+  resources :topics
+
+  get "chat/index"
+  post "chat/showmore"
   resources :messages
 
   get "adv_list/index"

@@ -38,7 +38,7 @@ class MessagesController < ApplicationController
         #@msg_list = Message.order(created_at: :desc).limit(5)
         #@message = Message.new
 
-        format.html { redirect_to forum_index_url}        
+        format.html { redirect_to chat_index_url}        
         format.js
         #format.json { render action: 'show', status: :created, location: @message }
       else

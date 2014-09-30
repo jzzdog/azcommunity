@@ -1,0 +1,76 @@
+1. RAILS COMMANDS
+
+rails server
+rake db:migrate
+rake db:seed
+rake test
+rake routes 
+bundle install
+
+
+2. GIT COMMANDS
+
+sudo apt-get install git
+
+//global configuration
+git config --global --add user.name jzzdog
+git config --global --add user.email dmanishchenko@gmail.com
+//check configuration
+git config --global --list
+
+//project commands
+project dir> git init
+project dir> git add .
+project dir> git commint -m "my commit options"
+project dir> git checkout .
+project dir> git status
+
+
+
+3. SCAFFOLDING
+
+ rails generate scaffold Advert \title:string description:text image_url:string price:decimal user_id:integer created:datetime
+ rails generate controller AdvList index
+ rails generate scaffold User name:string password:digest office:integer phone:string 
+ rails generate controller Sessions new create destroy
+ sqlite3 -line db/development.sqlite3 "select * from users"
+
+rails generate migration add_email_to_users mail:string
+rails generate migration add_conirm_hash_to_users confirm_hash:string
+rails generate migration add_status_to_users status:integer
+rails generate migration remove_created_from_advert
+
+rails generate migration add_status_to_adverts status:integer
+
+rails generate scaffold Message \title:string body:text user_id:integer office_id:integer
+rails generate migration add_status_to_messages status:integer
+
+rails generate controller Forum index
+
+rails generate mailer UserNotifier confirmation greeting
+
+rails generate paperclip Advert photo
+sudo apt-get install imagemagick
+
+rails g bootstrap:themed users
+
+rails generate scaffold Topic name:string
+rails generate scaffold Post title:string body:text user:belongs_to topic:belongs_to
+rails generate scaffold Comment body:text user:belongs_to topic:belongs_to parent:integer
+
+rails g bootstrap:themed posts
+
+rails generate controller Chat index
+
+
+4. COMMIT COMMANDS
+
+git remote add origin https://github.com/jzzdog/azcommunity.git
+git push -u origin master
+
+
+5. DEPLOYMENT COMMANDS
+
+git init
+git clone https://github.com/jzzdog/azcommunity.git
+git pull origin bootstrap

@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140816154952) do
+ActiveRecord::Schema.define(version: 20140927204403) do
 
   create_table "adverts", force: true do |t|
     t.string   "title"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 20140816154952) do
     t.datetime "photo_updated_at"
   end
 
+  create_table "comments", force: true do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.integer  "parent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["topic_id"], name: "index_comments_on_topic_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
   create_table "messages", force: true do |t|
     t.string   "title"
     t.text     "body"
@@ -37,6 +49,24 @@ ActiveRecord::Schema.define(version: 20140816154952) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "status"
+  end
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "topics", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

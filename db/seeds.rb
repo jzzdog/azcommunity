@@ -86,5 +86,19 @@ Message.create!(title: 'Всем привет!',
   office_id: 1,
   status: 0)
 
+Topic.delete_all
+Topic.create!(id: 1, name: 'Для тех, кто работает в офисе на Варшавке')
+Topic.create!(name: 'Для тех, кто работает в офисе на Озерковке')
+Topic.create!(name: 'Страхование')
+Topic.create!(name: 'Посмеяться')
+Topic.create!(name: 'Судьба компании')
+Topic.create!(name: 'Другое')
+
+
+Post.delete_all
+Post.create!(title: 'Расписание маршуток',
+  body: 'Текст расписания маршруток',
+  user: User.find(1),
+  topic: Topic.find(1))
 
 

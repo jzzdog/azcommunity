@@ -35,7 +35,7 @@
 
 <% if Message.count > @msg_list.count %>
   <span>
-    <%= button_to 'Показать еще', forum_showmore_path(limit: @msg_list.count + 5 ), :class => "showmore", remote: true %> 
+    <%= button_to 'Показать еще', chat_showmore_path(limit: @msg_list.count + 5 ), :class => "showmore", remote: true %> 
   </span>
 <% end %>
 
