@@ -1,32 +1,26 @@
 <%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
+    <%= f.label :Заголовок, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :title, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :body, :class => 'control-label' %>
+    <%= f.label :Текст, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :body, :class => 'text_field' %>
+      <%= f.text_area :body, :class => 'text_field', cols: 35, rows: 10 %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :user_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :user_id, :class => 'text_field' %>
-    </div>
-  </div>
+  
   <div class="control-group">
     <%= f.label :topic_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :topic_id, :class => 'text_field' %>
+      <%= f.select :topic_id, Topic.all.map{ |t| [t.name, t.id] } %>
     </div>
   </div>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                posts_path, :class => 'btn' %>
+    <%= link_to 'Отмена',posts_path(params), :class => 'btn' %>
   </div>
 <% end %>

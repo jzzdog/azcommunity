@@ -3,10 +3,12 @@
   <h1>Публикации</h1>
 </div>
 
-<ul class="breadcrumb">
-  <li><%= link_to 'Форум', forum_index_path %> / </span></li>
-  <li><%= link_to Topic.find(params[:topic]).name, posts_index_path(params[:topic])%></li>  
-</ul>
+<% if params[:topic] %>
+  <ul class="breadcrumb">
+    <li><%= link_to 'Форум', forum_index_path %> / </span></li>  
+    <li><%= link_to Topic.find(params[:topic]).name, posts_index_path(params[:topic])%></li>  
+  </ul>
+<% end %>
 
 
 
@@ -21,8 +23,7 @@
         <p><small><span><%= post.created_at.strftime("%d.%m.%Y в %k:%m") %></span></small></p>
       </td>     
       <td>
-        <h4><%= link_to post.title, post_path(post) %></h4>
-        
+        <p><%= link_to post.title, post_path(post), :style=>'font-size:12pt'%></p>        
         <p><%= sanitize(post.body)%></p>        
         
         <% if session[:user_id] == post.user_id %>
@@ -33,13 +34,19 @@
     </tr>
     <% end %>
   </table>
-  <p class="muted">Всего публикаций: <%= Post.where(:topic_id => params[:topic]).count %> </p>
+
+  <% if params[:topic] %>
+    <p class="muted">Всего публикаций: <%= Post.where(:topic_id => params[:topic]).count %> </p>
+  <% else %>
+    <p class="muted">Всего публикаций: <%= Post.count %> </p>
+  <% end %>
+  
 <% end %>
 
 
 <div class="form-actions1">
-<%= link_to 'Написать свой пост',
-            new_post_path,
+<%= link_to 'Новый пост',
+            new_post_path(params),
             :class => 'btn btn-primary' %>
 </div>
 
