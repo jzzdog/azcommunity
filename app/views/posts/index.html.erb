@@ -19,7 +19,9 @@
     <% @posts.each do |post| %>
     <tr>  
       <td width="80px">
-        <em><small><span><%= User.find(post.user_id||2).get_user_info() %></span></small></em> 
+        <% if post.user_id %>
+          <em><small><span><%= User.find(post.user_id).get_user_info() %></span></small></em> 
+        <% end %>
         <p><small><span><%= post.created_at.strftime("%d.%m.%Y в %k:%m") %></span></small></p>
       </td>     
       <td>
