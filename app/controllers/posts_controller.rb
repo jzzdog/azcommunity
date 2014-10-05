@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @comments = Comment.where(:post_id=>@post.id).order(created_at: :desc)
+    @comments = Comment.where(:post_id=>@post.id).order(created_at: :asc)
     @new_comment = Comment.new
     @new_comment.post_id = @post.id
   end
