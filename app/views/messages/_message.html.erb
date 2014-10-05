@@ -16,19 +16,25 @@
 <% if @msg_list %>   
   <table class="table table-striped">    
     <% @msg_list.each_with_index do |msg, index| %>
-    <tr><td>
-      <div>  
-        <em><p class="text-warning1"><%= User.find_by(id: msg.user_id).get_user_info() %></p></em>
-        <p><%= msg.body %>
+    <tr>
+      
+      <td>
+        <div>  
+          <em><p>
+            <%= image_tag User.find(msg.user_id).ava_url, :style=>"width:18px" %>
+            <%= User.find_by(id: msg.user_id).get_user_info() %>
             <span class="muted"><small><%= msg.created_at.to_s(:ru_datetime)%></small></span>
-            <% if session[:user_id] == msg.user_id %>
-              <span><%= link_to '', edit_message_path(msg) %> </span>
-            <% end %>
-        </p>
+          </p></em>
+          <p><%= sanitize(msg.body.gsub(/\n/, '<br>'))%>                          
+              <% if session[:user_id] == msg.user_id %>
+                <span><%= link_to '', edit_message_path(msg) %> </span>
+              <% end %>
+          </p>
 
-      </div>
-    <% end %>
-  </td></tr>
+        </div>
+      <% end %>
+    </td>
+  </tr>
   </table>
 <% end %>
 

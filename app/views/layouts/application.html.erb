@@ -64,7 +64,7 @@
             <% if User.find_by(id: session[:user_id]) %>
                 <!--<table class="pull-right"> -->
                 <table>
-                  <tr><td><i class="icon-user"><%=link_to " " + User.find_by(id: session[:user_id]).name , adv_list_invite_path %></td></tr>
+                  <tr><td><i class="icon-user"><%=link_to " " + User.find_by(id: session[:user_id]).name , user_path(session[:user_id]) %></td></tr>
                   <tr><td><i class="icon-off"></i><%= link_to " Выйти", logout_url %></td></tr>
                 </table>
               <% else %>              

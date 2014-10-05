@@ -8,7 +8,7 @@
 <dl class="dl-horizontal">
   <p>
     <dt><strong>Описание:</strong></dt>
-    <dd><%= sanitize(@advert.description) %></dd>
+    <dd><%= sanitize(@advert.description.gsub(/\n/, '<br>')) %></dd>    
   </p>
 
 

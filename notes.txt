@@ -57,11 +57,13 @@ rails g bootstrap:themed users
 rails generate scaffold Topic name:string
 rails generate scaffold Post title:string body:text user:belongs_to topic:belongs_to
 rails generate scaffold Comment body:text user:belongs_to topic:belongs_to parent:integer
+rails generate migration add_post_id_to_comments post_id:integer
+rails generate migration remove_topic_id_from_comment
 
 rails g bootstrap:themed posts
 
 rails generate controller Chat index
-
+rails generate paperclip User avatar
 
 4. COMMIT COMMANDS
 

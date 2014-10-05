@@ -1,28 +1,35 @@
-<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @user, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>  
+
   <div class="control-group">
     <%= f.label :Имя, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :mail, :class => 'text_field', :type => "email"%>
+
+  <% if params[:action] == 'new' %>
+  
+    <div class="control-group">
+      <%= f.label :email, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :mail, :class => 'text_field', :type => "email"%>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :Пароль, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password, :class => 'text_field' %>
+  
+    <div class="control-group">
+      <%= f.label :Пароль, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password, :class => 'text_field' %>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :Подтверждение, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password_confirmation, :class => 'text_field'%>
+    <div class="control-group">
+      <%= f.label :Подтверждение, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password_confirmation, :class => 'text_field'%>
+      </div>
     </div>
-  </div>
+  <% end %>
+
   <div class="control-group">
     <%= f.label :Офис, :class => 'control-label' %>
     <div class="controls">
@@ -34,10 +41,23 @@
     <div class="controls">
       <%= f.text_field :phone, :class => 'text_field' %>
     </div>
-  </div>    
+  </div>      
+
+  <div class="control-group">    
+    <%= f.label :Аватар, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :avatar %>    
+    </div>
+  </div>  
 
   <div class="form-actions">
-    <%= f.submit "Зарегистрироваться", :class => 'btn btn-primary' %>
-    <%= link_to "Отмена", login_url, :class => 'btn' %>
+    <%= f.submit (params[:action] == "edit") ? 'Сохранить' : 'Зарегистрироваться', :class => 'btn btn-primary' %>
+    <% if params[:action] == 'new' %>
+      <%= link_to 'Отмена', login_url, :class => 'btn' %>
+    <% end %>
+    <% if params[:action] == 'edit' %>
+      <%= link_to 'Отмена', user_path(@user.id), :class => 'btn' %>
+    <% end %>
   </div>
+
 <% end %>

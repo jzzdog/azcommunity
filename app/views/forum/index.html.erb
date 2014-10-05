@@ -23,10 +23,12 @@
   </tbody>
 </table>
 
-<% if User.find_by(id: session[:user_id]).name == 'admin' %>
-  <%= link_to t('.new', :default => t("helpers.links.new")),
+<% if User.find(session[:user_id]).administrator? %>
+  <div class="form-actions">
+    <%= link_to 'Добавить рубрику',
             new_topic_path,
             :class => 'btn btn-primary' %>
+  </div>
 <% end %>
 
 <br>

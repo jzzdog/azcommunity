@@ -1,26 +1,28 @@
 <%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
+
   <div class="control-group">
-    <%= f.label :Заголовок, :class => 'control-label' %>
+    <%= f.label :Рубрика, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :title, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :Текст, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :body, :class => 'text_field', cols: 35, rows: 10 %>
-    </div>
-  </div>
-  
-  <div class="control-group">
-    <%= f.label :topic_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :topic_id, Topic.all.map{ |t| [t.name, t.id] } %>
+      <%= f.select :topic_id, Topic.all.map{ |t| [t.name, t.id] }, {}, {:style=>'width:510px;'} %>
     </div>
   </div>
 
+  <div class="control-group">
+    <%= f.label :Заголовок, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'text_field', :style=>'width:500px'%>
+    </div>
+  </div>  
+
+  <div class="control-group">
+    <%= f.label :Текст, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :body, :class => 'text_field', cols: 65, rows: 10, :style=>'width:500px' %>
+    </div>
+  </div>  
+
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to 'Отмена',posts_path(params), :class => 'btn' %>
+    <%= f.submit params[:action] == "edit" ? 'Обновить' : 'Добавить', :class => 'btn btn-primary' %>
+    <%= link_to 'Отмена',post_path(@post), :class => 'btn' %>
   </div>
 <% end %>

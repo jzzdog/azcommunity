@@ -17,7 +17,7 @@
 				<% end %>			
 
 				<div class="userinfo">
-					<em><small><span><%= User.find_by(id: adv.user_id).get_user_info() %></span></small></em>
+					<em><small><span><%= User.find(adv.user_id).get_user_info() %></span></small></em>
 				</div>
 				<div class="userinfo">			
 					<small><span><%= adv.created_at.strftime("%d.%m.%Y в %k:%m") %></span></small>

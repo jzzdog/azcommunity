@@ -8,7 +8,7 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:body) %></th>
       <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:topic_id) %></th>
+      <th><%= model_class.human_attribute_name(:post_id) %></th>
       <th><%= model_class.human_attribute_name(:parent) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -20,7 +20,7 @@
         <td><%= link_to comment.id, comment_path(comment) %></td>
         <td><%= comment.body %></td>
         <td><%= comment.user_id %></td>
-        <td><%= comment.topic_id %></td>
+        <td><%= comment.post_id %></td>
         <td><%= comment.parent %></td>
         <td><%=l comment.created_at %></td>
         <td>
