@@ -20,7 +20,9 @@ Azcommunity::Application.configure do
 
 	#config.action_mailer.raise_delivery_errors = true
 	#config.time_zone = 'Moscow' # +0400
-	config.time_zone = "(GMT+04:00) Moscow"
+	#config.time_zone = "(GMT+04:00) Moscow"
+	config.time_zone = 'Moscow'
+	config.active_record.default_timezone = :local
 
 end
 
