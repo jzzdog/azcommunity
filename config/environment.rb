@@ -22,7 +22,7 @@ Azcommunity::Application.configure do
 	#config.time_zone = 'Moscow' # +0400
 	#config.time_zone = "(GMT+04:00) Moscow"
 	config.time_zone = 'Moscow'
-	config.active_record.default_timezone = :local
+	#config.active_record.default_timezone = :local
 
 end
 

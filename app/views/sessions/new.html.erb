@@ -7,10 +7,8 @@
 <div class="azcommunity_form">
 	
 
-	<%= form_tag do %>
-		<fieldset>
-
-			
+	<%= form_tag nil, :class => 'form-horizontal1' do %>
+		<fieldset>			
 
 			<div>
 				<%= label_tag :name, 'Имя:' %>
@@ -23,11 +21,16 @@
 			</div>
 
 			<div>				
-				<table><tr>
-					<td><%= button_to "Войти", login_url, :class => "btn btn-success" %> </td>
-					<td valign="top"><a href=<%= users_new_url%>>&nbsp;&nbsp;Зарегистрироваться</a></td>
+				<table>
+					<tr>
+						<td><%= button_to "Войти", login_url, :class => "btn btn-success" %> </td>
+						<td valign="top" align="left">
+							&nbsp;&nbsp;<%= link_to 'Зарегистрироваться', users_new_url %>
+						</td>						
 				</tr></table>
 			</div>
-		</fieldset>
+
+			
+		</fieldset>		
 	<% end %>
 </div>

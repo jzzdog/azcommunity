@@ -5,7 +5,7 @@
 
 		<% @adv.each do |adv| %>
 		<tr> 
-			<td width="80px"><%= image_tag(adv.get_image_url) %> <td> 
+			<td width="80px"><%= image_tag(adv.get_image_url, :class=>'fixed_thumb') %> <td> 
 			<td>
 				<h4><%= link_to adv.title, adv%></h4>
 				
