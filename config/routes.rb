@@ -7,6 +7,7 @@ Azcommunity::Application.routes.draw do
   resources :posts
 
   get "forum/index"
+  get "forum/notify"
   resources :topics
 
   get "chat/index"

@@ -40,6 +40,15 @@
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-mini btn-danger' %>
         <% end %>
+
+        <% if admin_rights? %>            
+            <%= link_to 'Разослать уведомления',
+              forum_notify_path(post_id: @post),:class => 'btn btn-mini btn-warning' %>
+            <%= link_to 'Разослать уведомления всем',
+              forum_notify_path(post_id: @post, user: 'all'),              
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-mini btn-warning' %>
+        <% end %>
         
         
         

@@ -47,4 +47,22 @@ class UserNotifier < ActionMailer::Base
 
     mail to: @email, subject: 'Invitation to Allianz Community'
   end
+
+  def new_post_notification(recipient, post_id)
+    @recipient = recipient
+    @email = @recipient.mail
+    if @email == 'admin@allianz.ru'
+      @email = 'dmanishchenko@gmail.com'
+    end
+    @post = Post.find(post_id)
+    @creator = User.find(@post.user_id)
+    @topic = Topic.find(@post.topic_id)
+    @link = Rails.env.production? ? 'http://allianz-community.com/' : 'http://localhost:3000/'
+    @link = @link + 'posts/' + post_id.to_s
+
+    if @email
+      mail to: @email, subject: 'Новая публикация в Allianz Community'      
+    end
+    
+  end
 end
