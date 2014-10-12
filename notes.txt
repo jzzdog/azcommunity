@@ -79,3 +79,5 @@ git init
 git clone https://github.com/jzzdog/azcommunity.git
 git pull origin bootstrap
 git pull origin forum
+
+test
