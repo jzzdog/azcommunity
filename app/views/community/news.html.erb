@@ -2,9 +2,6 @@
   <h1><small>Сообщество сотрудников Allianz</small></h1>
 </div>
 
-<p class="lead1"><%= User.find(session[:user_id]).name.capitalize %>, добро пожаловать в сообщество!<p>
-
-
 <h3 class="legend">Новости сообщества <span class="label label-warning">News</span> </h3>
 
 <div class="well">
@@ -20,6 +17,9 @@
             <%= link_to user.name, user_path(user.id) %> 
             <small class="muted"> <%= user.created_at.in_time_zone('Moscow').strftime("%d.%m.%Y в %k:%m") %> </small>
         </li>
+        <% end %>
+        <% if admin_rights? %>
+          <%= link_to 'все пользователи', users_path %>
         <% end %>
       </ul>
     </td>
@@ -43,7 +43,7 @@
   <tr>
     <td>      
       <p class="lead1"> В сообществе <span class="badge badge-info"><%= Post.all.count %></span> публикаций(ии,ия)!<p>
-      <p> Последние добавленные публицации </p>
+      <p> Последние добавленные публикации </p>
       <ul>
         <% @last_posts.each do |post| %>
         <li>

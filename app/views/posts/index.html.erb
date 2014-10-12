@@ -27,7 +27,7 @@
         <% if post.user_id && User.find_by_id(post.user_id) %>          
           <em><small><span><%= User.find(post.user_id).get_user_info() %></span></small></em> 
         <% end %>
-        <p><small><span><%= post.created_at.in_time_zone('Moscow').strftime("%d.%m.%Y в %k:%m") %></span></small></p>        
+        <p><small><span><%= post.created_at.in_time_zone('Moscow').to_s(:ru_datetime) %></span></small></p>        
       </td>     
       <td>
         <%= link_to post.title, post_path(post), :style=>'font-size:12pt'%>

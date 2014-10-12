@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       else
         if user.authenticate(params[:password])
           session[:user_id] = user.id
-          redirect_to adv_list_index_url
+          redirect_to root_path
         else 
           redirect_to login_url, alert: "Неверная комбинация имени и пароля"  
         end
@@ -30,6 +30,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-  	redirect_to adv_list_index_url, notice: "Сеанс завершен"
+  	redirect_to root_path, notice: "Сеанс завершен"
   end
 end

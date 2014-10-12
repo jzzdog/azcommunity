@@ -11,8 +11,10 @@
   <dd><%= @user.name %></dd>  
   <dt><strong>Офис:</strong></dt>
   <dd><%= @user.office_name %></dd>
-  <dt><strong>Телефон:</strong></dt>
-  <dd><%= @user.phone %></dd>
+  <%if @user.phone != "" %>
+    <dt><strong>Телефон:</strong></dt>
+    <dd><%= @user.phone %></dd>
+  <% end %>
   <dt><strong>Email:</strong></dt>  
   <dd><%= @user.mail %></dd>
   <%if admin_rights? %>
