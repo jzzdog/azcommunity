@@ -65,6 +65,8 @@ rails g bootstrap:themed posts
 rails generate controller Chat index
 rails generate paperclip User avatar
 
+rails generate controller Community news
+
 4. COMMIT COMMANDS
 
 git remote add origin https://github.com/jzzdog/azcommunity.git

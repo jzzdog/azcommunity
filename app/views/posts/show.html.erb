@@ -17,17 +17,15 @@
   <table class="table">    
     <tr>  
       <td width="80px">
-        <% if @post.user_id && User.find(@post.user_id) %>          
+        <% if @post.user_id && User.find_by_id(@post.user_id) %>          
           <%= image_tag User.find(@post.user_id).ava_url %>
-          <em><small><span><%= User.find(@post.user_id).get_user_info() %></span></small></em> 
+          <%= link_to User.find(@post.user_id).name, user_path(@post.user_id) %>                
+          <em><small><span>(<%= User.find(@post.user_id).office_name %>)</span></small></em> 
         <% end %>
-        <p><small><span><%= @post.created_at.strftime("%d.%m.%Y в %k:%m") %></span></small></p>
+        <p><small><span><%= @post.created_at.in_time_zone('Moscow').strftime("%d.%m.%Y в %k:%m") %></span></small></p>
       </td>     
       <td width="10px"></td>
       <td>
-        
-
-        
         
         <p><%= sanitize( @post.body.gsub(/\n/, '<br>') )%></p>
 
@@ -42,7 +40,7 @@
         <% end %>
 
         <% if admin_rights? %>            
-            <%= link_to 'Разослать уведомления',
+            <%= link_to 'Отправить уведомление',
               forum_notify_path(post_id: @post),:class => 'btn btn-mini btn-warning' %>
             <%= link_to 'Разослать уведомления всем',
               forum_notify_path(post_id: @post, user: 'all'),              

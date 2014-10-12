@@ -27,11 +27,15 @@
         <% if post.user_id && User.find_by_id(post.user_id) %>          
           <em><small><span><%= User.find(post.user_id).get_user_info() %></span></small></em> 
         <% end %>
-        <p><small><span><%= post.created_at.strftime("%d.%m.%Y в %k:%m") %></span></small></p>
+        <p><small><span><%= post.created_at.in_time_zone('Moscow').strftime("%d.%m.%Y в %k:%m") %></span></small></p>        
       </td>     
       <td>
         <%= link_to post.title, post_path(post), :style=>'font-size:12pt'%>
-        <p><%= sanitize(post.body[0..100]) + '..'%></p>
+        <p>
+            <%= sanitize(post.body[0..60]) + '..'%>
+            <small><%= link_to 'читать дальше', post_path(post)%></small>
+            
+        </p>
       </td>
     </tr>
     <% end %>

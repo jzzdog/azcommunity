@@ -2,6 +2,7 @@
 Azcommunity::Application.routes.draw do
 
   
+  get "community/news"
   resources :comments
   get "posts/index"
   resources :posts

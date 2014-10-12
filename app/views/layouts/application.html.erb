@@ -48,7 +48,7 @@
             <span class="icon-bar"></span>
           </a>          
 
-          <a class="brand" href="#"><%= image_tag("logo_community.png", :class=>'fixed_logo' ) %> </a>
+          <a class="brand" href=<%= community_news_path %>><%= image_tag("logo_community.png", :class=>'fixed_logo' ) %> </a>
           <div class="container nav-collapse">
             <ul class="nav">
               <%= menu_divider %>
@@ -104,22 +104,26 @@
               <div class="well sidebar-nav">
                 <!--<span class="label label-info">Информация</span>-->
                 <p class="bg-info"> <%=@info%> </p>              
+                <% unless @no_info_links %>
                 <h4>Ссылки</h4>               
-                <ul class="nav nav-list">                
-                  <%if controller.controller_name == 'adv_list' %> 
-                    
-                    <li><%= link_to "Добавить объявление", adv_list_index_path %></li>
-                    <li><%= link_to "Все объявления", adv_list_index_path  %></li>
-                    <li><%= link_to "Мои объявления", adv_list_myindex_path  %></li>              
-                  <% end %>  
-                  <%if controller.controller_name == 'sessions' %> 
-                    <li><%= link_to "Зарегистрироваться", users_new_url %></li>                  
-                  <% end %>
-                  <%if controller.controller_name == 'users' %>                   
-                    <li><%= link_to "Войти", login_url %></li>
-                  <% end %>
-                  
-                </ul>
+                  <ul class="nav nav-list">                
+                    <%if controller.controller_name == 'adv_list' %> 
+                      
+                      <li><%= link_to "Добавить объявление", adv_list_index_path %></li>
+                      <li><%= link_to "Все объявления", adv_list_index_path  %></li>
+                      <li><%= link_to "Мои объявления", adv_list_myindex_path  %></li>              
+                    <% end %>  
+                    <%if controller.controller_name == 'sessions' %> 
+                      <li><%= link_to "Зарегистрироваться", users_new_url %></li>                  
+                    <% end %>
+                    <%if controller.controller_name == 'users' %>                   
+                      <li><%= link_to "Войти", login_url %></li>
+                    <% end %>
+                    <%if controller.controller_name == 'chat' %>                                       
+                      <li><%= link_to "Форум", forum_index_path  %></li>
+                    <% end %>                  
+                  </ul>
+                <% end %>
                 
               </div><!--/.well -->
             </div><!--/span-->

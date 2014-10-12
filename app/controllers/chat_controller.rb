@@ -3,6 +3,8 @@ class ChatController < ApplicationController
   	
   	@msg_list = Message.order(created_at: :desc).limit(5)
   	@message = Message.new
+    @info = 'Задавайте свои вопросы в режиме "Онлайн". 
+      Но для подробного обсуждения каких-либо тем добавляейте свои публикации в разделе "Форум"'
   end
 
   def showmore

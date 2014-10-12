@@ -1,0 +1,59 @@
+<div class="page-header">
+  <h1><small>Сообщество сотрудников Allianz</small></h1>
+</div>
+
+<p class="lead1"><%= User.find(session[:user_id]).name.capitalize %>, добро пожаловать в сообщество!<p>
+
+
+<h3 class="legend">Новости сообщества <span class="label label-warning">News</span> </h3>
+
+<div class="well">
+<table class="table table-striped">
+  <tr class="warning"> <td><span class="muted", style="font-size:14px">Пользователи</span></td> </tr>  
+  <tr>
+    <td>      
+      <p class="lead1"> Нас уже <span class="badge badge-info"><%= User.all.count %></span> участник(а,ов)!<p>
+      <p> Последние присоединившиеся пользователи </p>
+      <ul>
+        <% @last_users.each do |user| %>
+        <li>
+            <%= link_to user.name, user_path(user.id) %> 
+            <small class="muted"> <%= user.created_at.in_time_zone('Moscow').strftime("%d.%m.%Y в %k:%m") %> </small>
+        </li>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
+  <tr class="warning"> <td><span class="muted", style="font-size:14px">Объявления</span></td> </tr>  
+  <tr>
+    <td>      
+      <p> В сообществе всего <span class="badge badge-info"><%= Advert.all.count %></span> объявлени(й,е)<p>
+      <p> Последние добавленные объявления </p>
+      <ul>
+        <% @last_adverts.each do |adv| %>
+        <li>
+            <%= link_to adv.title, advert_path(adv.id) %> 
+            <small class="muted"> <%= adv.created_at.in_time_zone('Moscow').strftime("%d.%m.%Y в %k:%m") %> </small>
+        </li>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
+  <tr class="warning"> <td><span class="muted", style="font-size:14px">Публикации</span></td> </tr>  
+  <tr>
+    <td>      
+      <p class="lead1"> В сообществе <span class="badge badge-info"><%= Post.all.count %></span> публикаций(ии,ия)!<p>
+      <p> Последние добавленные публицации </p>
+      <ul>
+        <% @last_posts.each do |post| %>
+        <li>
+            <%= link_to post.title, post_path(post.id) %> 
+            <small class="muted"> <%= post.created_at.in_time_zone('Moscow').strftime("%d.%m.%Y в %k:%m") %> </small>
+        </li>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+</div>

@@ -3,7 +3,7 @@
   <div class="well">
     
       <p>Новое сообщение<p>
-      <%= f.text_area :body, cols: 60, rows: 3%>    
+      <%= f.text_area :body, cols: 60, rows: 3, :style=>'width:500px'%>    
 
     <div class="form-actions1">
       <%= f.submit :Отправить, :class => 'btn btn-primary' %>
@@ -21,9 +21,10 @@
       <td>
         <div>  
           <em><p>
-            <%= image_tag User.find(msg.user_id).ava_url, :style=>"width:18px" %>
-            <%= User.find_by(id: msg.user_id).get_user_info() %>
-            <span class="muted"><small><%= msg.created_at.to_s(:ru_datetime)%></small></span>
+            <%= image_tag User.find(msg.user_id).ava_url, :style=>"width:18px" %>            
+            <%= link_to User.find(msg.user_id).name, user_path(msg.user_id) %>
+            <small><span>(<%= User.find(msg.user_id).office_name %>)</span></small>
+            <span class="muted"><small><%= msg.created_at.in_time_zone('Moscow').to_s(:ru_datetime)%></small></span>
           </p></em>
           <p><%= sanitize(msg.body.gsub(/\n/, '<br>'))%>                          
               <% if session[:user_id] == msg.user_id %>

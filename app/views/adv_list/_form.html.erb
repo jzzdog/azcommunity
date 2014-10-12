@@ -17,10 +17,12 @@
 				<% end %>			
 
 				<div class="userinfo">
-					<em><small><span><%= User.find(adv.user_id).get_user_info() %></span></small></em>
+					<% if User.find_by_id(adv.user_id) %>
+						<em><small><span><%= User.find(adv.user_id).get_user_info() %></span></small></em>
+					<% end %>
 				</div>
 				<div class="userinfo">			
-					<small><span><%= adv.created_at.strftime("%d.%m.%Y в %k:%m") %></span></small>
+					<small><span><%= adv.created_at.in_time_zone('Moscow').strftime("%d.%m.%Y в %k:%m") %></span></small>
 					<% if session[:user_id] == adv.user_id %>
 					  <span><%= link_to 'редактировать', edit_advert_path(adv), :style=>"color:gray" %> </span>
 					<% end %>
@@ -36,8 +38,8 @@
 <% if params[:only_my] && (@adv.count == 0) %>
 
 
-<h4> У вас пока нет своих объявлений.</h4>
-<h4> Нажмите "Подать объявление", чтобы добавить объявление. </h4>
+<p> У вас пока нет своих объявлений.</p>
+<p> Нажмите "Подать объявление", чтобы добавить объявление. </p>
 <br/>
 <% end %>	
 

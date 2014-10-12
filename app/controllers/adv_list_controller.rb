@@ -44,6 +44,9 @@ class AdvListController < ApplicationController
   end  
 
   def invite
+    @info = 'Хотели бы видеть в сообществе кого-то из друзей? Направьте ему приглашение. 
+      Для этого достаточно указать email и нажать "отправить приглашение".'
+    @no_info_links = true
   end  
 
   def send_invite

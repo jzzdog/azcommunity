@@ -3,9 +3,13 @@
   <h2><%= @advert.title %></h2>
 </div>
 
-<%= image_tag @advert.get_image_url, :class => "img-polaroid" %>
-
 <dl class="dl-horizontal">
+  
+  <p>
+    <dt><strong>Изображение:</strong></dt>
+    <dd><%= image_tag @advert.get_image_url, :class => "img-polaroid" %></dd>    
+  </p>
+
   <p>
     <dt><strong>Описание:</strong></dt>
     <dd><%= sanitize(@advert.description.gsub(/\n/, '<br>')) %></dd>    
