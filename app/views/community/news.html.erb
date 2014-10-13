@@ -27,7 +27,7 @@
   <tr class="warning"> <td><span class="muted", style="font-size:14px">Объявления</span></td> </tr>  
   <tr>
     <td>      
-      <p> В сообществе всего <span class="badge badge-info"><%= Advert.all.count %></span> объявлени(й,е)<p>
+      <p> В сообществе всего <span class="badge badge-info"><%= Advert.where(status: 1).count %></span> объявлени(й,е)<p>
       <p> Последние добавленные объявления </p>
       <ul>
         <% @last_adverts.each do |adv| %>
