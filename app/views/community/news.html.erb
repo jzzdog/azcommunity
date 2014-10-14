@@ -1,5 +1,10 @@
 <div class="page-header">
-  <h1><small>Сообщество сотрудников Allianz</small></h1>
+  <h1><small>Сообщество сотрудников Allianz
+      <% if admin_rights? %>
+        <%= Rails.env.to_s %>
+      <% end %>      
+    </small>
+  </h1>
 </div>
 
 <h3 class="legend">Новости сообщества <span class="label label-warning">News</span> </h3>
