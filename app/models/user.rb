@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
     with: %r{\A(\S+)(manishchenko@gmail.com|@allianz.ru)\Z}i,
     message: 'Почтовый адрес должен быть в формате example@allianz.ru'
   }
-  OFFICES = %w(Без\ офиса Озерковская\ набережная Варшавское\ шоссе)
+  OFFICES = %w(Без\ офиса Озерковская\ набережная Варшавское\ шоссе Санкт-Петербург Краснодарский\ филиал Воронеж)
 
   def get_user_info()
   	"#{name} (#{OFFICES[office]})"
