@@ -18,3 +18,7 @@
 # Ignoring paper-clip uploaded images
 /public/assets/adverts
 /public/assets/users
+
+# Ignoring sublime project files
+*.sublime-project
+*.sublime-workspace
