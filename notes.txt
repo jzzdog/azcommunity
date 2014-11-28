@@ -73,11 +73,24 @@ git remote add origin https://github.com/jzzdog/azcommunity.git
 git push -u origin master
 
 
-5. DEPLOYMENT COMMANDS
+5. CONFIGURE ENVIRONMENT
+install git
+sudo apt-get install curl
+sudo apt-get install nodejs
+sudo apt-get install libmysqlclient-dev
+
+#only for production
+sudo apt-get install apache2
+sudo apt-get install mysql-server
+
+6. DEPLOYMENT COMMANDS
 
 git init
 git clone https://github.com/jzzdog/azcommunity.git
 git pull origin bootstrap
 git pull origin forum
 
-test
+6. DEPLOYMENT 
+bundle install --without production
+rake db:migrate RAILS_ENV=development
+

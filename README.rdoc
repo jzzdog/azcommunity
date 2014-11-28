@@ -1,7 +1,18 @@
 == README
 
+This is example of community web-application with 
+* Advertisment posting
+* Forum page
+* Chat page
+
+== ENVIRONMENT CONFIGURATION
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
+
+install git if you have not yet
+<tt>rake doc:app</tt>
+
 
 Things you may want to cover:
 
