@@ -1,7 +1,11 @@
-== README
+== Community application for employees of any company
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is community web application, included
+* posting advertisment page
+* chat page
+* forum page
+
+== Instalation
 
 Things you may want to cover:
 
