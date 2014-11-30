@@ -1,18 +1,50 @@
-== Community application for employees of any company
+== Community application for employees
 
 This is community web application, included
 * posting advertisment page
 * chat page
 * forum page
 
-== Instalation
+You can try it http://allianz-community.com/login
+
+== Configure environment
+
+<tt>$ sudo apt-get install curl</tt>
+<tt>$ sudo apt-get install libmysqlclient-dev</tt>
+<tt>$ sudo apt-get install nodejs</tt>
+
+For production deploing instll apache and data base server
+<tt>$ sudo apt-get install apache2</tt>
+<tt>$ sudo apt-get install mysql-server</tt>
+
+== install ruby and rvm
+<tt>$ sudo apt-get install ruby1.9.3</tt>
+
+deprecated
+<tt>$ gem install rails --version 4.0.0 --no-ri --no-rdoc</tt>
+
+<tt>$ curl -L https://get.rvm.io | bash -s stable</tt>
+
+set in terminal run as login shell and at new window start
+<tt>$ rvm requirements --autolibs=enable</tt>
+
+<tt>$ rvm install 2.0.0</tt>
+<tt>$ rvm use 2.0.0</tt>
+<tt>$ gem install rails --version 4.0.0 --no-ri --no-rdoc</tt>
+
+== prepare project
+<tt>$ bundle install</tt>
+<tt>$ rake db:migrate</tt>
+
+goto http://localhost:3000/
+
 
 Things you may want to cover:
 
 * Ruby version
 
 * System dependencies
-
+ 
 * Configuration
 
 * Database creation
