@@ -1,64 +1,64 @@
+= About
+
 == Community application for employees
 
 This is community web application, included
 * posting advertisment page
 * chat page
 * forum page
+You can try it http://allianz-community.com
 
-You can try it http://allianz-community.com/login
+== System requirements
+
+* Ruby version 1.9.3
+* Rails verion 4.0 
+* ubuntu 12
+* apache2 (for production)
+* database: - sqlite(developing), mysql(production)
+
+
+= Deployment instructions
 
 == Configure environment
 
 <tt>
 $ sudo apt-get install curl
+
 $ sudo apt-get install libmysqlclient-dev
-$ sudo apt-get install nodejs</tt>
+
+$ sudo apt-get install nodejs
+</tt>
 
 For production deploing instll apache and data base server
+
 <tt>$ sudo apt-get install apache2</tt>
+
 <tt>$ sudo apt-get install mysql-server</tt>
 
 == install ruby and rvm
 <tt>$ sudo apt-get install ruby1.9.3</tt>
 
-deprecated
-<p><tt>$ gem install rails --version 4.0.0 --no-ri --no-rdoc</tt></p>
-
 <tt>$ curl -L https://get.rvm.io | bash -s stable</tt>
 
 set in terminal run as login shell and at new window start
+
 <tt>$ rvm requirements --autolibs=enable</tt>
 
 <tt>$ rvm install 2.0.0</tt>
+
 <tt>$ rvm use 2.0.0</tt>
+
 <tt>$ gem install rails --version 4.0.0 --no-ri --no-rdoc</tt>
 
 == prepare project
 <tt>$ bundle install</tt>
+
 <tt>$ rake db:migrate</tt>
 
 goto http://localhost:3000/
 
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
- 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 
 Please feel free to use a different markup language if you do not plan to run
