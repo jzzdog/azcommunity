@@ -9,9 +9,9 @@ You can try it http://allianz-community.com/login
 
 == Configure environment
 
-<tt>$ sudo apt-get install curl</tt>
-<tt>$ sudo apt-get install libmysqlclient-dev</tt>
-<tt>$ sudo apt-get install nodejs</tt>
+<p><tt>$ sudo apt-get install curl</tt></p>
+<p><tt>$ sudo apt-get install libmysqlclient-dev</tt></p>
+<p><tt>$ sudo apt-get install nodejs</tt></p>
 
 For production deploing instll apache and data base server
 <tt>$ sudo apt-get install apache2</tt>
@@ -21,7 +21,7 @@ For production deploing instll apache and data base server
 <tt>$ sudo apt-get install ruby1.9.3</tt>
 
 deprecated
-<tt>$ gem install rails --version 4.0.0 --no-ri --no-rdoc</tt>
+<p><tt>$ gem install rails --version 4.0.0 --no-ri --no-rdoc</tt></p>
 
 <tt>$ curl -L https://get.rvm.io | bash -s stable</tt>
 
