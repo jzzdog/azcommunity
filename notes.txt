@@ -1,14 +1,6 @@
-1. RAILS COMMANDS
-
-rails server
-rake db:migrate
-rake db:seed
-rake test
-rake routes 
-bundle install
 
 
-3. SCAFFOLDING
+3. SCAFFOLDING HISTORY
 
  rails generate scaffold Advert \title:string description:text image_url:string price:decimal user_id:integer created:datetime
  rails generate controller AdvList index
@@ -53,23 +45,6 @@ rails generate controller Community news
 git remote add origin https://github.com/jzzdog/azcommunity.git
 git push -u origin master
 
-
-5. CONFIGURE ENVIRONMENT
-install git
-sudo apt-get install curl
-sudo apt-get install nodejs
-sudo apt-get install libmysqlclient-dev
-
-#only for production
-sudo apt-get install apache2
-sudo apt-get install mysql-server
-
-6. DEPLOYMENT COMMANDS
-
-git init
-git clone https://github.com/jzzdog/azcommunity.git
-git pull origin bootstrap
-git pull origin forum
 
 6. DEPLOYMENT 
 bundle install --without production

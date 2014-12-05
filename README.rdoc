@@ -16,7 +16,10 @@ You can try it http://allianz-community.com
 * database sqlite(developing), mysql(production)
 
 
+
 = Deployment instructions
+
+Read this section if you have not all points, mentioned in requrements
 
 == Configure environment
 
@@ -53,4 +56,9 @@ set in terminal run as login shell and at new window start
 
 <tt>$ rake db:seed</tt>
 
+<tt>$ rake test</tt>
+
+<tt>$ rails server</tt>
+
 goto http://localhost:3000/ to check it
+Use <tt>$ rake routes</tt> to check routes
