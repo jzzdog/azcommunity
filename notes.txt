@@ -8,25 +8,6 @@ rake routes
 bundle install
 
 
-2. GIT COMMANDS
-
-sudo apt-get install git
-
-//global configuration
-git config --global --add user.name jzzdog
-git config --global --add user.email dmanishchenko@gmail.com
-//check configuration
-git config --global --list
-
-//project commands
-project dir> git init
-project dir> git add .
-project dir> git commint -m "my commit options"
-project dir> git checkout .
-project dir> git status
-
-
-
 3. SCAFFOLDING
 
  rails generate scaffold Advert \title:string description:text image_url:string price:decimal user_id:integer created:datetime
