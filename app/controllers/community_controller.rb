@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CommunityController < ApplicationController
   def news
   	@info = "#{User.find(session[:user_id]).name.capitalize}, добро пожаловать в сообщество сотрудников Allianz!

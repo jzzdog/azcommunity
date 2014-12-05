@@ -31,7 +31,7 @@ class UsersController < ApplicationController
         if @user.confirm_hash = params[:hash]
           @user.status = 0
           @user.update(:status => 0)
-          @message_text = "Учетная запись успешно подтверждена!"
+          @message_text = "Учетная запись успешно подтверждена."
         else
           @message_text = "Неверный код подтверждения"
         end

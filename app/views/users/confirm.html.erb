@@ -1,6 +1,16 @@
-<h1><%= @message_text %></h1>
-
-<% if notice %>
-<p id="notice"><%= notice %> </p>
+<% if @user && @user.status == 0 %>
+	<div class="alert alert-success">
+  		 <h4> Поздавляем! </h4>
+  		 <p> @message_text </p>  		 
+  		 <%= link_to "Войти", login_path %>
+	</div>			
+<% else %>
+	<div class="alert alert-success">
+  		 <h4> Ошибка! </h4>
+  		 <p> @message_text </p>
+	</div>			
 <% end %>
+
+
+
 
