@@ -1,14 +1,6 @@
-1. RAILS COMMANDS
-
-rails server
-rake db:migrate
-rake db:seed
-rake test
-rake routes 
-bundle install
 
 
-3. SCAFFOLDING
+3. SCAFFOLDING HISTORY
 
  rails generate scaffold Advert \title:string description:text image_url:string price:decimal user_id:integer created:datetime
  rails generate controller AdvList index
@@ -54,11 +46,7 @@ git remote add origin https://github.com/jzzdog/azcommunity.git
 git push -u origin master
 
 
-5. DEPLOYMENT COMMANDS
+6. DEPLOYMENT 
+bundle install --without production
+rake db:migrate RAILS_ENV=development
 
-git init
-git clone https://github.com/jzzdog/azcommunity.git
-git pull origin bootstrap
-git pull origin forum
-
-test

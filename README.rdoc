@@ -1,33 +1,32 @@
 = About
 
-== Community application for employees
-
-This is community web application, included
-* posting advertisment page
+This is example of community web application with
+* page for posting advertisment
 * chat page
 * forum page
 You can try it http://allianz-community.com
+
 
 == System requirements
 
 * Ruby version 1.9.3
 * Rails verion 4.0 
-* ubuntu 12
+* ubuntu version 12 and higher
 * apache2 (for production)
-* database: - sqlite(developing), mysql(production)
+* database sqlite(developing), mysql(production)
+
 
 
 = Deployment instructions
 
+Read this section if you have not all points, mentioned in requrements
+
 == Configure environment
 
-<tt>
-$ sudo apt-get install curl
+ $ sudo apt-get install curl
+ $ sudo apt-get install libmysqlclient-dev
+ $ sudo apt-get install nodejs
 
-$ sudo apt-get install libmysqlclient-dev
-
-$ sudo apt-get install nodejs
-</tt>
 
 For production deploing instll apache and data base server
 
@@ -35,7 +34,7 @@ For production deploing instll apache and data base server
 
 <tt>$ sudo apt-get install mysql-server</tt>
 
-== install ruby and rvm
+== Install ruby and rvm
 <tt>$ sudo apt-get install ruby1.9.3</tt>
 
 <tt>$ curl -L https://get.rvm.io | bash -s stable</tt>
@@ -50,16 +49,16 @@ set in terminal run as login shell and at new window start
 
 <tt>$ gem install rails --version 4.0.0 --no-ri --no-rdoc</tt>
 
-== prepare project
+== Prepare project
 <tt>$ bundle install</tt>
 
 <tt>$ rake db:migrate</tt>
 
-goto http://localhost:3000/
+<tt>$ rake db:seed</tt>
 
+<tt>$ rake test</tt>
 
+<tt>$ rails server</tt>
 
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+goto http://localhost:3000/ to check it
+Use <tt>$ rake routes</tt> to check routes
