@@ -3,7 +3,7 @@ class ForumController < ApplicationController
   def index  	  	
     @info = 'Здесь отображается список рубрик форума.
       Выберите интересную рубрику, чтобы посмотреть публикации по этой теме. 
-      Напишите на allianz.community@gmail.com, если интересная Вам рубрика отсутствует.'
+      Напишите на alnz.community@gmail.com, если интересная Вам рубрика отсутствует.'
     @no_info_links = true
   	@topics = Topic.all
   end  

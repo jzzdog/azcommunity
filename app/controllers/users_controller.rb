@@ -50,7 +50,8 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    
+    @user = User.new(user_params)   
 
     @user.status = -1
     @user.confirm_hash = @user.generate_confirm_hash
@@ -65,9 +66,11 @@ class UsersController < ApplicationController
             Для завершения регистрации перейдите по ссылке, указанной в письме. 
             Если не получили письмо, проверьте не попало ли оно в спам.}}
           format.json { render action: 'show', status: :created, location: @user }
-        else
-          format.html { render action: 'new' }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
+          
+        else         
+
+          format.html { render action: 'new' }          
+          format.json { render json: @user.errors.to_json, status: :unprocessable_entity }
         end
       #end
     end

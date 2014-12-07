@@ -1,3 +1,4 @@
+<%= render "community/validation_errors", :resource => @user %>
 <%= form_for @user, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>  
 
   <div class="control-group">
@@ -7,7 +8,7 @@
     </div>
   </div>
 
-  <% if params[:action] == 'new' %>
+  <% if params[:action] != 'edit' %>
   
     <div class="control-group">
       <%= f.label :email, :class => 'control-label' %>
@@ -52,7 +53,7 @@
   </div>  
 
   <div class="form-actions">
-    <%= f.submit (params[:action] == "edit") ? 'Сохранить' : 'Зарегистрироваться', :class => 'btn btn-primary' %>
+    <%= f.submit (params[:action] == "edit") ? 'Сохранить' : 'Зарегистрироваться', :class => 'btn btn-primary'%>
     <% if params[:action] == 'new' %>
       <%= link_to 'Отмена', login_url, :class => 'btn' %>
     <% end %>

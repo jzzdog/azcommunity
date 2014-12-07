@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class UserNotifier < ActionMailer::Base
-  default from: "allianz.community@gmail.com"
+  default from: "alnz.community@gmail.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:

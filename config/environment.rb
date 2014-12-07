@@ -11,9 +11,9 @@ Azcommunity::Application.configure do
 	config.action_mailer.smtp_settings = {
 		address:        "smtp.gmail.com", 
 		port:           587,
-		domain:         "allianz.community.com",
+		domain:         "allianz-community.com",
 		authentication: "plain",
-		user_name:      "allianz.community@gmail.com",
+		user_name:      "alnz.community@gmail.com",
 		password:       "30dq47vY",
 		enable_starttls_auto: true
 	}

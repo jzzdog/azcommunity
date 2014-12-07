@@ -1,4 +1,11 @@
-<h1><%= @message_text %></h1>
+<h1><small> Подтверждение </small></h1>
+<p>
+<div class="well">	
+<%= @message_text %>
+<p><%= link_to 'Войти', login_url, :class => 'btn-primary' %> </p>
+</div>
+</p>
+
 
 <% if notice %>
 <p id="notice"><%= notice %> </p>
