@@ -56,6 +56,8 @@ set in terminal run as login shell and at new window start
 
 <tt>$ rake db:seed</tt>
 
+<tt>$ rake about</tt>
+
 <tt>$ rake test</tt>
 
 <tt>$ rails server</tt>
