@@ -58,6 +58,8 @@ set in terminal run as login shell and at new window start
 
 <tt>$ rake about</tt>
 
+<tt>$ rake assets:precompile</tt>
+
 <tt>$ rake test</tt>
 
 <tt>$ rails server</tt>
