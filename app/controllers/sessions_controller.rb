@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(name: params[:name])
+    user = User.find_by(name: params[:name]) || User.find_by(mail: params[:name])
     if user
       if user.status == -1
         redirect_to login_url, alert: "Указанна учетная запись не подтверждена. 
